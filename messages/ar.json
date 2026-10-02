@@ -1,0 +1,40 @@
+{
+  "common": {
+    "siteTitle": "فريق سول لايف | تدريب وتعليم طبي مجاني في غزة",
+    "siteDescription": "فريق سول لايف مبادرة طلابية تطوعية توفر برامج تدريبية وتعليمية مجانية لطلبة التخصصات الطبية في قطاع غزة.",
+    "tagline": "نتعلّم • نتدرّب • نُلهم",
+    "englishTagline": "Care • Learn • Inspire",
+    "shortDescription": "مبادرة طلابية تطوعية لتدريب طلبة التخصصات الطبية في قطاع غزة",
+    "contact": "تواصل معنا",
+    "collaborate": "تعاون معنا",
+    "scope": "قطاع غزة (شمال، وسط، جنوب)",
+    "skipToContent": "انتقل إلى المحتوى الرئيسي"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "about": "من نحن",
+    "programs": "برامجنا",
+    "team": "فريقنا",
+    "teamOverview": "مجلس الإدارة والشعب",
+    "committees": "اللجان التخصصية",
+    "behindTheScenes": "كواليس الميدان",
+    "library": "المكتبة الطبية",
+    "gallery": "معرض الصور",
+    "voices": "آراء الطلبة",
+    "collaborate": "تعاون معنا",
+    "contact": "اتصل بنا"
+  },
+  "footer": {
+    "aboutSoulLife": "مبادرة طلابية تطوعية غير ربحية يقودها طلبة كليات الطب في قطاع غزة، تُعنى بتقديم برامج تدريبية وتعليمية مجانية عالية الجودة لطلبة التخصصات الطبية.",
+    "quickLinks": "روابط سريعة",
+    "specializedTracks": "مساراتنا التدريبية",
+    "contactInfo": "بيانات التواصل",
+    "emailLabel": "البريد الإلكتروني",
+    "phoneLabel": "الهاتف المباشر",
+    "instagramLabel": "إنستغرام المبادرة",
+    "scopeLabel": "النطاق الميداني",
+    "rights": "جميع الحقوق محفوظة لفريق سول لايف © 2026",
+    "digitalPlatformCredit": "Digital Platform by Hussein Mohammad Hussein Naser",
+    "developerCredit": "منصة رقمية بإشراف وتطوير: حسين محمد حسين نصر"
+  }
+}

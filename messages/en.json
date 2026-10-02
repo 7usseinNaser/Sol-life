@@ -1,0 +1,40 @@
+{
+  "common": {
+    "siteTitle": "Soul Life Team | Free Medical Training in Gaza",
+    "siteDescription": "Soul Life Team is a student-led volunteer initiative providing free, high-quality medical training for health sciences students in Gaza.",
+    "tagline": "Care • Learn • Inspire",
+    "englishTagline": "Care • Learn • Inspire",
+    "shortDescription": "A student-led medical training initiative across the Gaza Strip",
+    "contact": "Contact Us",
+    "collaborate": "Collaborate",
+    "scope": "Gaza Strip (North, Central, South)",
+    "skipToContent": "Skip to main content"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "programs": "Programs",
+    "team": "Our Team",
+    "teamOverview": "Board & Regional Branches",
+    "committees": "Committees",
+    "behindTheScenes": "Behind the Scenes",
+    "library": "Medical Library",
+    "gallery": "Gallery",
+    "voices": "Student Voices",
+    "collaborate": "Collaborate",
+    "contact": "Contact"
+  },
+  "footer": {
+    "aboutSoulLife": "A student-led, non-profit volunteer initiative in Gaza dedicated to providing free, high-quality medical and clinical training for medical specialty students.",
+    "quickLinks": "Quick Links",
+    "specializedTracks": "Training Tracks",
+    "contactInfo": "Contact Information",
+    "emailLabel": "Email",
+    "phoneLabel": "Direct Phone",
+    "instagramLabel": "Instagram",
+    "scopeLabel": "Operational Scope",
+    "rights": "All rights reserved to Soul Life Team © 2026",
+    "digitalPlatformCredit": "Digital Platform by Hussein Mohammad Hussein Naser",
+    "developerCredit": "Digital Platform by Hussein Mohammad Hussein Naser"
+  }
+}

@@ -1,0 +1,59 @@
+:root {
+  /* Brand Palette from Logo */
+  --color-navy: #08324A;
+  --color-navy-dark: #051F2E;
+  --color-navy-light: #0E4260;
+  --color-deep-teal: #0D5260;
+  --color-teal: #40A39C;
+  --color-teal-vibrant: #1B8B82;
+  --color-teal-light: #67C0B9;
+  --color-mint: #E4F3F1;
+  --color-mint-subtle: #F1F9F8;
+  --color-bg: #F6FAF9;
+  --color-surface: #FFFFFF;
+  --color-ink: #0F2A3A;
+  --color-ink-muted: #4A6572;
+  --color-ink-subtle: #7A929E;
+  --color-border: rgba(13, 82, 96, 0.12);
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(135deg, var(--color-navy) 0%, var(--color-deep-teal) 50%, var(--color-teal) 100%);
+  --gradient-pulse: linear-gradient(90deg, var(--color-teal) 0%, var(--color-teal-light) 50%, var(--color-mint) 100%);
+  --gradient-dark-glass: linear-gradient(145deg, rgba(8, 50, 74, 0.85) 0%, rgba(13, 82, 96, 0.7) 100%);
+  --gradient-light-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.75) 0%, rgba(241, 249, 248, 0.55) 100%);
+
+  /* Glassmorphism System */
+  --glass-bg-light: rgba(255, 255, 255, 0.7);
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --glass-bg-dark: rgba(8, 50, 74, 0.78);
+  --glass-border-dark: rgba(64, 163, 156, 0.25);
+  --glass-blur-sm: 8px;
+  --glass-blur-md: 16px;
+  --glass-blur-lg: 24px;
+  --glass-shadow: 0 16px 40px -12px rgba(8, 50, 74, 0.12), 0 4px 12px -2px rgba(8, 50, 74, 0.06);
+  --glass-shadow-floating: 0 24px 50px -15px rgba(8, 50, 74, 0.2), 0 8px 20px -4px rgba(8, 50, 74, 0.1);
+
+  /* Motion Tokens (BRD §10) */
+  --duration-fast: 200ms;
+  --duration-normal: 450ms;
+  --duration-slow: 800ms;
+  --duration-cinematic: 1200ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+}
+
+/* Fallback for browsers not supporting backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+  :root {
+    --glass-bg-light: rgba(255, 255, 255, 0.96);
+    --glass-bg-dark: rgba(8, 50, 74, 0.96);
+  }
+}

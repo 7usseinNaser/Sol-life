@@ -1,0 +1,111 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { GraduationCap, Stethoscope, Building2, ArrowLeft, HeartHandshake } from 'lucide-react';
+
+export function FinalCTA() {
+  const audiences = [
+    {
+      icon: GraduationCap,
+      category: 'طالب في كليات الطب والعلوم الصحية',
+      title: 'ابدأ بالتعلّم وطوّر مهاراتك',
+      desc: 'انضم إلى دوراتنا الميدانية المجانية في محافظتك واكتسب المهارة السريرية العملية بإشراف مباشر.',
+      ctaText: 'استكشف الدورات المتاحة',
+      href: '/programs',
+      primary: true,
+    },
+    {
+      icon: Stethoscope,
+      category: 'طبيب اختصاصي أو كادر تمريضي',
+      title: 'ساهم بخبرتك وألهم الجيل القادم',
+      desc: 'شارك في الإشراف على الورش العملية ودرب طلبة الكليات الطبية لبناء كفاءات صحية قادرة على العطاء.',
+      ctaText: 'انضم كمدرب متطوع',
+      href: '/contact?role=trainer',
+      primary: false,
+    },
+    {
+      icon: Building2,
+      category: 'مؤسسة صحية، أكاديمية، أو داعمة',
+      title: 'تعاون معنا وساند العمل الطلابي',
+      desc: 'نسعى لشراكات مستدامة لاستضافة البرامج وتوفير المستلزمات الطبية والمنح الدراسية للطلبة.',
+      ctaText: 'تواصل للتعاون والشراكة',
+      href: '/collaborate',
+      primary: false,
+    },
+  ];
+
+  return (
+    <section
+      id="cta"
+      dir="rtl"
+      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none"
+      aria-label="دعوة للمشاركة والتعاون مع فريق سول لايف"
+    >
+      <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#08324A] via-[#062438] to-[#041622] text-white border border-[#40A39C]/40 shadow-2xl overflow-hidden">
+        {/* Glow Effects */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#40A39C]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#0D5260]/30 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#40A39C]/40 text-[#40A39C] text-xs font-bold mb-4">
+            <HeartHandshake className="w-4 h-4" />
+            <span>كُن جزءاً من أثر سول لايف</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-black font-heading tracking-tight text-white mb-4">
+            معاً نصنع مستقبل الرعاية الصحية في غزة
+          </h2>
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
+            سواء كنت طالباً يبحث عن المعرفة السريرية، أو طبيباً يرغب بنقل خبرته، أو مؤسسة تساند العمل الإنساني، مكانك هنا معنا.
+          </p>
+        </div>
+
+        {/* 3 Audience Cards */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {audiences.map((aud, idx) => {
+            const Icon = aud.icon;
+            return (
+              <div
+                key={idx}
+                className={`rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 border ${
+                  aud.primary
+                    ? 'bg-gradient-to-b from-[#40A39C]/25 to-white/10 border-[#40A39C] shadow-lg shadow-[#40A39C]/10'
+                    : 'bg-white/5 border-white/10 hover:border-white/25 hover:bg-white/10'
+                }`}
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 text-[#40A39C] flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span className="text-[11px] font-bold text-[#40A39C] block mb-1">
+                    {aud.category}
+                  </span>
+                  <h3 className="text-lg font-bold font-heading text-white mb-2">
+                    {aud.title}
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                    {aud.desc}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <Link
+                    href={aud.href}
+                    className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-200 ${
+                      aud.primary
+                        ? 'bg-[#40A39C] hover:bg-[#358a84] text-[#08324A] shadow-md'
+                        : 'bg-white/10 hover:bg-white/20 text-white'
+                    }`}
+                  >
+                    <span>{aud.ctaText}</span>
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
