@@ -11,7 +11,7 @@ export default function BehindTheScenesPage() {
       title: 'تحضير القاعات والمجسمات السريرية',
       phase: 'ما قبل التدريب',
       desc: 'فحص أدوات الخياطة الجراحية، ترتيب المعاطف الطبية، وتجهيز مجسمات التدريب لضمان أن كل متدرب يحظى بمساحة عمل مستقلة ومكتملة.',
-      image: '/images/ambulance-arrival.jpg',
+      image: '/images/regions/central.jpg',
     },
     {
       title: 'التنسيق والاتصال بالمؤسسات المستضيفة',
@@ -23,7 +23,7 @@ export default function BehindTheScenesPage() {
       title: 'مرافقة المدربين وتوزيع المهام',
       phase: 'ساعة الصفر الميدانية',
       desc: 'اجتماع تنسيقي سريع لأعضاء اللجان الميدانية، واستقبال الطلبة المقبولين، والتأكد من مطابقة كشوفات الحضور بدقة متناهية.',
-      image: '/images/ambulance-arrival.jpg',
+      image: '/images/regions/khan-younis.jpg',
     },
   ];
 

@@ -50,6 +50,30 @@ export default function GalleryPage() {
       src: '/images/ecg-ambient.jpg',
       aspect: 'aspect-[16/9]',
     },
+    {
+      id: 6,
+      title: 'ورشة التدريب السريري والدم الكامل - خانيونس',
+      category: 'field',
+      categoryLabel: 'الميدان والتنسيق',
+      src: '/images/regions/khan-younis.jpg',
+      aspect: 'aspect-[16/9]',
+    },
+    {
+      id: 7,
+      title: 'محاكاة مهارات التمريض والمصطلحات الطبية - الوسطى',
+      category: 'clinical',
+      categoryLabel: 'الرمزية السريرية',
+      src: '/images/regions/central.jpg',
+      aspect: 'aspect-[16/9]',
+    },
+    {
+      id: 8,
+      title: 'المهندس المعماري ومطور المنصة الرقمية - م. حسين ناصر',
+      category: 'team',
+      categoryLabel: 'الفريق الرسمي',
+      src: '/images/developer-hussein.jpg',
+      aspect: 'aspect-square',
+    },
   ];
 
   const filteredItems = galleryItems.filter((item) =>

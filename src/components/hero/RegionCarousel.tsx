@@ -122,7 +122,7 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
           {/* Visual Thumbnail */}
           <div className="md:col-span-5 relative h-48 sm:h-56 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border border-white/15 shadow-inner group">
             <Image
-              src="/images/team-group.jpg"
+              src={activeRegion.imagePlaceholder || '/images/team-group.jpg'}
               alt={`فريق سول لايف في ${activeRegion.labelAr}`}
               fill
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 contrast-105"
