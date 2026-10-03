@@ -1,12 +1,13 @@
 {
   "common": {
-    "siteTitle": "Soul Life Team | Free Medical Training in Gaza",
-    "siteDescription": "Soul Life Team is a student-led volunteer initiative providing free, high-quality medical training for health sciences students in Gaza.",
-    "tagline": "Care • Learn • Inspire",
+    "siteTitle": "Soul Life Team | Free Clinical Medical Training in Gaza",
+    "brandName": "Soul Life Team",
+    "siteDescription": "A student-led voluntary initiative providing free, high-quality clinical and surgical training for medical and health sciences students in the Gaza Strip.",
+    "tagline": "Learn • Practice • Inspire",
     "englishTagline": "Care • Learn • Inspire",
-    "shortDescription": "A student-led medical training initiative across the Gaza Strip",
+    "shortDescription": "Student-led voluntary medical training initiative across the Gaza Strip",
     "contact": "Contact Us",
-    "collaborate": "Collaborate",
+    "collaborate": "Collaborate With Us",
     "scope": "Gaza Strip (North, Central, South)",
     "skipToContent": "Skip to main content"
   },
@@ -24,17 +25,130 @@
     "collaborate": "Collaborate",
     "contact": "Contact"
   },
+  "hero": {
+    "kicker": "Student-Led Non-Profit Medical Training Initiative • Gaza Strip",
+    "displayWord": "SOUL LIFE",
+    "headline": "Learn. Practice. Inspire.",
+    "subheadline": "A voluntary student initiative dedicated to building medical competence in Gaza, making free, high-quality clinical training accessible to all healthcare students.",
+    "ctaStory": "Discover Our Story",
+    "ctaPrograms": "Explore Medical Programs"
+  },
+  "arrival": {
+    "badge": "Symbolic Cinematic Scene • Field Arrival Scenario",
+    "title": "The Team Arrives to Learn & Train",
+    "subtitle": "A symbolic artistic metaphor of medical student volunteers journeying toward clinical training halls to bridge the gap between classroom theory and field practice.",
+    "disclaimer": "Artistic depiction of student medical training efforts, not an emergency ambulance service",
+    "beat1Title": "Launch of the Medical Track",
+    "beat1Desc": "Young medical talent uniting from diverse health faculties under a single humanitarian purpose.",
+    "beat2Title": "From Theory to Hands-on Clinical Mastery",
+    "beat2Desc": "Equipping training kits, suture simulation pads, and field diagnostic equipment.",
+    "beat3Title": "Arrival at Training Venues",
+    "beat3Desc": "Welcoming every passionate student dedicated to serving their community."
+  },
+  "gap": {
+    "badge": "The Clinical Gap",
+    "title": "Bridging Academic Theory & Field Reality",
+    "subtitle": "Textbooks and academic lectures provide the scientific foundation, but saving lives in Gaza demands tactile feel, knot dexterity, and calm clinical composure.",
+    "theoryTitle": "Academic Classroom Theory",
+    "theoryItem1": "Hundreds of pages covering anatomy and systemic physiology",
+    "theoryItem2": "Lecture-hall slides and abstract memorized concepts",
+    "theoryItem3": "The daunting reality when confronting your first clinical laceration",
+    "practicalTitle": "Soul Life Hands-on Field Training",
+    "practicalItem1": "Direct tactile handling of surgical tools and human-tissue simulators",
+    "practicalItem2": "Mastering sutures, cannulas, and real-time clinical blood lab interpretation",
+    "practicalItem3": "Instilling the composure of a field physician under senior specialist guidance"
+  },
+  "threeRegions": {
+    "badge": "Integrated Field Presence",
+    "title": "Three Regions, One Heartbeat",
+    "subtitle": "From the resilient North through the Central Governorate to Khan Younis in the South; Soul Life branches unite to guarantee equitable training for all healthcare students across Gaza.",
+    "footerNote": "North • Central • South — Solidarity in Humanitarian & Medical Student Service"
+  },
+  "proof": {
+    "volunteers": "Active Field Volunteers",
+    "volunteersSub": "9 Executive Board + 21 Field Branch Volunteers",
+    "registrants": "Verified Student Applicants",
+    "registrantsSub": "Across 7 official cohort editions in governorates",
+    "accepted": "Students Accepted & Certified",
+    "acceptedSub": "In addition to ~100 in surgical suturing programs",
+    "governorates": "Key Governorates Covered",
+    "governoratesSub": "North Gaza • Central Area • Khan Younis"
+  },
+  "vision": {
+    "badge": "Identity & Mission",
+    "title": "Vision, Mission & Strategic Goals",
+    "subtitle": "Towards a resilient healthcare generation led by qualified medical students who blend academic excellence with field surgical mastery.",
+    "visionTab": "Our Vision",
+    "visionContent": "To be the leading student medical training initiative in the Gaza Strip and an inspiring benchmark in applied medical education, empowering a healthcare generation fully prepared to handle complex humanitarian realities.",
+    "missionTab": "Our Mission",
+    "missionContent": "Delivering free, high-caliber clinical and surgical workshops to medical and healthcare students in Gaza, fostering an empowering educational environment that elevates tactile skills and ethical composure.",
+    "goalsTab": "Strategic Goals",
+    "goal1": "Hone core clinical and manual surgical skills for health sciences students through direct hands-on simulation.",
+    "goal2": "Bridge the gap between theoretical university curriculums and practical ward and emergency room realities.",
+    "goal3": "Foster a deep-rooted culture of volunteerism and societal accountability among rising medical professionals.",
+    "goal4": "Expand free medical training across all Gaza Strip governorates without financial or geographical barriers.",
+    "goal5": "Forge sustainable collaborative bridges with health and academic entities to enhance training outcomes."
+  },
+  "courses": {
+    "badge": "Field Track Record",
+    "title": "Latest Medical Training Programs",
+    "subtitle": "An officially verified portfolio of completed, active, and upcoming clinical programs delivered by Soul Life Team.",
+    "detailsButton": "View Official Report",
+    "trainer": "Trainer:",
+    "sessions": "Sessions:",
+    "accepted": "Accepted Students:",
+    "disclaimer": "⚠️ All metrics are strictly extracted from verified field registries and attendance records."
+  },
+  "whyUs": {
+    "badge": "Why Soul Life?",
+    "title": "Five Pillars Defining Our Field Impact",
+    "subtitle": "Professional standards and institutional integrity designed around the genuine clinical needs of Gaza's healthcare students.",
+    "item1Title": "100% Free Hands-On Training",
+    "item1Desc": "We champion every student's right to free medical training with zero financial burden, supplying all surgical kits and consumables.",
+    "item2Title": "Led by Practicing Physicians & Consultants",
+    "item2Desc": "Training is spearheaded by senior clinical doctors who transmit real frontline clinical instincts directly to students.",
+    "item3Title": "Comprehensive Regional Outreach",
+    "item3Desc": "Our local field branches bring training directly to students in North Gaza, Deir Al-Balah, and Khan Younis without travel hazards.",
+    "item4Title": "Advanced Simulators & Genuine Instruments",
+    "item4Desc": "We utilize realistic silicone tissue pads and real surgical instruments to guarantee authentic clinical tactile feedback.",
+    "item5Title": "Collaborative Student Medical Community",
+    "item5Desc": "A vibrant youth network fostering interdisciplinary peer support and lasting bonds across medical faculties."
+  },
+  "future": {
+    "badge": "Future Horizons",
+    "title": "What's Next for Soul Life?",
+    "subtitle": "Strategic roadmap initiatives to serve Gaza's healthcare students and wider community.",
+    "plannedBadge": "Planned",
+    "card1Title": "Interactive Digital Medical Repository",
+    "card1Desc": "Launching an open-access medical repository with clinical video guides, condensed handbooks, and wound diagnostics atlases.",
+    "card2Title": "Mobile Clinical Simulation Unit",
+    "card2Desc": "Deploying a portable simulation unit equipped with CPR manikins and airway models to reach distant health centers.",
+    "card3Title": "Student Clinical Scientific Symposia",
+    "card3Desc": "Organizing academic symposia allowing students to present case studies and clinical reflections under specialist peer review."
+  },
+  "marquee": {
+    "title": "Institutions We Cooperate & Communicate With",
+    "subtitle": "Municipalities, hospitals, community centers, and academic bodies we coordinate with to advance medical training in Gaza"
+  },
+  "finalCta": {
+    "badge": "Join the Impact",
+    "title": "Together, We Build an Empowered Healthcare Generation",
+    "subtitle": "Whether you are a student striving for clinical mastery, a physician ready to mentor, or an institution seeking to empower youth; Soul Life's doors are always open.",
+    "studentCta": "Join as a Student",
+    "trainerCta": "Volunteer as a Trainer",
+    "partnerCta": "Institutional Collaboration"
+  },
   "footer": {
-    "aboutSoulLife": "A student-led, non-profit volunteer initiative in Gaza dedicated to providing free, high-quality medical and clinical training for medical specialty students.",
+    "aboutSoulLife": "A student-led, non-profit volunteer initiative in Gaza dedicated to providing free, high-quality medical and clinical training for healthcare students.",
     "quickLinks": "Quick Links",
-    "specializedTracks": "Training Tracks",
+    "specializedTracks": "Specialized Tracks",
     "contactInfo": "Contact Information",
     "emailLabel": "Email",
     "phoneLabel": "Direct Phone",
-    "instagramLabel": "Instagram",
+    "instagramLabel": "Official Instagram",
     "scopeLabel": "Operational Scope",
     "rights": "All rights reserved to Soul Life Team © 2026",
-    "digitalPlatformCredit": "Digital Platform by Hussein Mohammad Hussein Naser",
-    "developerCredit": "Digital Platform by Hussein Mohammad Hussein Naser"
+    "digitalPlatformCredit": "Digital Platform by Eng. Hussein Mohammad Hussein Naser",
+    "developerCredit": "Platform Architect & Developer: Eng. Hussein Mohammad Naser"
   }
 }

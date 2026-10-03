@@ -1,5 +1,5 @@
 import React from 'react';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { teamStats } from '@/data/stats';
 import { Preloader } from '@/components/hero/Preloader';
 import { Hero } from '@/components/hero/Hero';
@@ -23,6 +23,8 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const isAr = locale === 'ar';
+  const tProof = await getTranslations({ locale, namespace: 'proof' });
 
   return (
     <>
@@ -59,10 +61,10 @@ export default async function HomePage({
               {teamStats.totalVolunteers}
             </div>
             <div className="text-xs sm:text-sm font-semibold text-[#0D5260] mt-1">
-              متطوعاً ومتطوعة في الميدان
+              {tProof('volunteers')}
             </div>
             <div className="text-[11px] text-[#4A6572] mt-0.5">
-              9 مجلس إدارة + 21 متطوع ميداني
+              {tProof('volunteersSub')}
             </div>
           </GlassCard>
 
@@ -74,10 +76,10 @@ export default async function HomePage({
               {teamStats.completedRosterRegistrants}
             </div>
             <div className="text-xs sm:text-sm font-semibold text-[#0D5260] mt-1">
-              طلب تسجيل موثق بالكشف
+              {tProof('registrants')}
             </div>
             <div className="text-[11px] text-[#4A6572] mt-0.5">
-              عبر 7 نسخ تدريبية في المحافظات
+              {tProof('registrantsSub')}
             </div>
           </GlassCard>
 
@@ -89,10 +91,10 @@ export default async function HomePage({
               {teamStats.completedRosterAccepted}
             </div>
             <div className="text-xs sm:text-sm font-semibold text-[#0D5260] mt-1">
-              طالباً تم قبولهم وتدريبهم
+              {tProof('accepted')}
             </div>
             <div className="text-[11px] text-[#4A6572] mt-0.5">
-              بالإضافة إلى ~100 في الخياطة الجراحية
+              {tProof('acceptedSub')}
             </div>
           </GlassCard>
 
@@ -104,10 +106,10 @@ export default async function HomePage({
               {teamStats.collaboratingInstitutionsCount}
             </div>
             <div className="text-xs sm:text-sm font-semibold text-[#0D5260] mt-1">
-              جهات نتواصل ونتعاون معها
+              {isAr ? 'جهات نتواصل ونتعاون معها' : 'Collaborating Entities'}
             </div>
             <div className="text-[11px] text-[#4A6572] mt-0.5">
-              مستشفيات، بلديات، ومراكز صحية
+              {isAr ? 'مستشفيات، بلديات، ومراكز صحية' : 'Hospitals, municipalities & centers'}
             </div>
           </GlassCard>
         </div>

@@ -3,11 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { RegionCarousel } from '@/components/hero/RegionCarousel';
 import { Sparkles, ArrowDown, Award, Users, HeartPulse } from 'lucide-react';
 
 export function Hero() {
+  const t = useTranslations('hero');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -24,11 +28,11 @@ export function Hero() {
 
   return (
     <section
-      dir="rtl"
+      dir={isAr ? 'rtl' : 'ltr'}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#051c2a] via-[#08324A] to-[#041622] text-white"
-      aria-label="الواجهة الرئيسية لفريق سول لايف"
+      aria-label={isAr ? "الواجهة الرئيسية لفريق سول لايف" : "Soul Life Team Hero Section"}
     >
       {/* Background Ambient Lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#40A39C]/12 rounded-full blur-[140px] pointer-events-none" />
@@ -43,7 +47,7 @@ export function Hero() {
         }}
       >
         <span className="text-[17vw] font-black tracking-tighter text-white/[0.035] md:text-white/[0.045] leading-none whitespace-nowrap font-heading">
-          سول لايف
+          {t('displayWord')}
         </span>
       </div>
 
@@ -55,18 +59,18 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#40A39C]" />
           </span>
           <span className="text-xs sm:text-sm font-semibold text-slate-100 font-sans tracking-wide">
-            مبادرة طلابية طبية تطوعية غير ربحية • قطاع غزة
+            {t('kicker')}
           </span>
         </div>
 
-        {/* Primary Headline: "نتعلّم. نتدرّب. نُلهم." */}
+        {/* Primary Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-heading leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E4F3F1] to-[#40A39C] drop-shadow-sm max-w-4xl">
-          نتعلّم. نتدرّب. نُلهم.
+          {t('headline')}
         </h1>
 
         {/* Verbatim Subheadline */}
         <p className="mt-4 sm:mt-5 text-base sm:text-xl text-slate-200/95 max-w-2xl font-sans leading-relaxed">
-          مبادرة طلابية تطوعية لبناء المعرفة والمهارة الطبية في غزة، وإتاحة التدريب المجاني العالي الجودة لطلبة الكليات الصحية.
+          {t('subheadline')}
         </p>
 
         {/* Dual CTAs */}
@@ -76,7 +80,7 @@ export function Hero() {
               href="#story"
               className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#40A39C] to-[#0D5260] hover:from-[#358a84] hover:to-[#093e49] text-white font-bold text-sm sm:text-base shadow-xl shadow-[#40A39C]/25 transition-all duration-300 hover:shadow-[#40A39C]/40 hover:scale-[1.02] border border-white/20"
             >
-              <span>اكتشف قصتنا</span>
+              <span>{t('ctaStory')}</span>
               <ArrowDown className="w-4 h-4 animate-bounce" />
             </Link>
           </MagneticButton>
@@ -87,7 +91,7 @@ export function Hero() {
               className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/20 backdrop-blur-md shadow-lg transition-all duration-300 hover:border-white/35"
             >
               <Sparkles className="w-4 h-4 text-[#40A39C]" />
-              <span>شاهد أثرنا وبرامجنا</span>
+              <span>{t('ctaPrograms')}</span>
             </Link>
           </MagneticButton>
         </div>
@@ -103,7 +107,7 @@ export function Hero() {
             {/* Group photo with gentle Ken-Burns zoom */}
             <Image
               src="/images/team-group.jpg"
-              alt="صورة الفريق الرسمية - متطوعو فريق سول لايف في قطاع غزة"
+              alt={isAr ? "صورة الفريق الرسمية - متطوعو فريق سول لايف في قطاع غزة" : "Soul Life Team Official Photo - Gaza Strip"}
               fill
               priority
               className="object-cover object-center filter brightness-[0.97] contrast-[1.05] transition-transform duration-1000 ease-out group-hover:scale-105"
@@ -112,44 +116,44 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#08324A]/90 via-[#08324A]/20 to-transparent" />
 
             {/* Floating Glass Pill 1: Total Volunteers */}
-            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 px-3.5 py-2 rounded-2xl bg-[#08324A]/80 border border-white/20 backdrop-blur-md shadow-xl flex items-center gap-2 text-right">
+            <div className={`absolute top-4 ${isAr ? 'right-4 sm:right-6' : 'left-4 sm:left-6'} sm:top-6 px-3.5 py-2 rounded-2xl bg-[#08324A]/80 border border-white/20 backdrop-blur-md shadow-xl flex items-center gap-2 ${isAr ? 'text-right' : 'text-left'}`}>
               <span className="p-1.5 rounded-xl bg-[#40A39C]/20 text-[#40A39C]">
                 <Users className="w-4 h-4" />
               </span>
               <div>
-                <p className="text-[11px] text-slate-300 font-sans">عضوية الفريق</p>
+                <p className="text-[11px] text-slate-300 font-sans">{isAr ? 'عضوية الفريق' : 'Team Members'}</p>
                 <p className="text-xs sm:text-sm font-bold text-white font-heading">
-                  30 متطوعاً ومتطوعة
+                  {isAr ? '30 متطوعاً ومتطوعة' : '30 Volunteers'}
                 </p>
               </div>
             </div>
 
             {/* Floating Glass Pill 2: Synchronous Operation */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 px-3.5 py-2 rounded-2xl bg-[#08324A]/80 border border-white/20 backdrop-blur-md shadow-xl flex items-center gap-2 text-right">
+            <div className={`absolute top-4 ${isAr ? 'left-4 sm:left-6' : 'right-4 sm:right-6'} sm:top-6 px-3.5 py-2 rounded-2xl bg-[#08324A]/80 border border-white/20 backdrop-blur-md shadow-xl flex items-center gap-2 ${isAr ? 'text-right' : 'text-left'}`}>
               <span className="p-1.5 rounded-xl bg-[#40A39C]/20 text-[#40A39C]">
                 <HeartPulse className="w-4 h-4" />
               </span>
               <div>
-                <p className="text-[11px] text-slate-300 font-sans">نطاق العمل</p>
+                <p className="text-[11px] text-slate-300 font-sans">{isAr ? 'نطاق العمل' : 'Field Branches'}</p>
                 <p className="text-xs sm:text-sm font-bold text-white font-heading">
-                  3 شعب بالتوازي
+                  {isAr ? '3 شعب بالتوازي' : '3 Parallel Branches'}
                 </p>
               </div>
             </div>
 
             {/* Bottom Caption within the Photo Card */}
-            <div className="absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-right bg-[#08324A]/70 border border-white/15 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl backdrop-blur-lg">
+            <div className={`absolute bottom-4 inset-x-4 sm:bottom-6 sm:inset-x-6 flex flex-col sm:flex-row items-center justify-between gap-3 ${isAr ? 'text-right' : 'text-left'} bg-[#08324A]/70 border border-white/15 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl backdrop-blur-lg`}>
               <div>
                 <h2 className="text-sm sm:text-base font-bold text-white font-heading">
-                  فريق طلابي يقود مستقبل التدريب الصحي في غزة
+                  {isAr ? 'فريق طلابي يقود مستقبل التدريب الصحي في غزة' : 'A student team leading healthcare training in Gaza'}
                 </h2>
                 <p className="text-xs text-slate-200/80 font-sans mt-0.5">
-                  رغم التحديات والصعوبات، تبقى المعرفة الطبية والمهارة السريرية حقاً لكل طالب.
+                  {isAr ? 'رغم التحديات والصعوبات، تبقى المعرفة الطبية والمهارة السريرية حقاً لكل طالب.' : 'Against all challenges, clinical knowledge and surgical dexterity remain a fundamental right for every student.'}
                 </p>
               </div>
               <div className="flex items-center gap-1.5 text-xs text-[#40A39C] font-semibold bg-[#40A39C]/15 px-3 py-1.5 rounded-lg border border-[#40A39C]/30 shrink-0">
                 <Award className="w-3.5 h-3.5" />
-                <span>برامج مجانية 100%</span>
+                <span>{isAr ? 'برامج مجانية 100%' : '100% Free Programs'}</span>
               </div>
             </div>
           </div>

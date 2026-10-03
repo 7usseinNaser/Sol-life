@@ -1,45 +1,50 @@
 'use client';
 
 import React from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { SectionHeading } from '@/components/motion/SectionHeading';
 import { Laptop, GraduationCap, Building2, Clock, Sparkles } from 'lucide-react';
 
 export function FutureVision() {
+  const t = useTranslations('future');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
+
   const futureProjects = [
     {
       icon: Laptop,
-      title: 'المنصة التعليمية الرقمية المفتوحة',
-      enTitle: 'Soul Life Digital Platform',
-      tag: 'مخطّط له',
-      desc: 'بناء منصة رقمية متكاملة تتيح سلايدات الدورات، والمراجع الطبية التخصصية، ومقاطع الفيديو التدريبية لطلبة الطب والتمريض أينما تواجدوا.',
+      title: t('card1Title'),
+      enTitle: isAr ? 'Soul Life Digital Platform' : 'المنصة التعليمية الرقمية المفتوحة',
+      tag: t('plannedBadge'),
+      desc: t('card1Desc'),
     },
     {
       icon: GraduationCap,
-      title: 'برنامج المنح الدراسية للطلبة المتفوقين',
-      enTitle: 'Medical Student Scholarships',
-      tag: 'مخطّط له',
-      desc: 'تأسيس صندوق بالشراكة مع المؤسسات الإنسانية والمانحة لتوفير منح تغطي الرسوم الجامعية لطلبة الكليات الصحية المتفوقين ذوي الظروف الصعبة.',
+      title: t('card2Title'),
+      enTitle: isAr ? 'Clinical Simulation Unit' : 'معمل المحاكاة السريرية المتنقل',
+      tag: t('plannedBadge'),
+      desc: t('card2Desc'),
     },
     {
       icon: Building2,
-      title: 'مركز المحاكاة والتدريب السريري المتكامل',
-      enTitle: 'Clinical Simulation Hub',
-      tag: 'مخطّط له',
-      desc: 'تأسيس قاعات تدريب مجهزة بمجسمات محاكاة متطورة تتيح للطلبة التدرب المستمر على مهارات الطوارئ والجراحة والإنعاش على مدار العام.',
+      title: t('card3Title'),
+      enTitle: isAr ? 'Student Clinical Symposia' : 'سلسلة المؤتمرات الطلابية السريرية',
+      tag: t('plannedBadge'),
+      desc: t('card3Desc'),
     },
   ];
 
   return (
     <section
       id="future"
-      dir="rtl"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none"
-      aria-label="المشاريع المستقبلية المخطط لها"
+      dir={isAr ? 'rtl' : 'ltr'}
+      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}
+      aria-label={isAr ? "المشاريع المستقبلية المخطط لها" : "Future Planned Initiatives"}
     >
       <SectionHeading
-        kicker="التطلعات المستقبلية"
-        title="ما القادم؟"
-        subtitle="هذه مشاريع ومبادرات طموحة مخطّط لها مستقبلاً، وليست خدمات متاحة حالياً"
+        kicker={t('badge')}
+        title={t('title')}
+        subtitle={t('subtitle')}
         align="center"
       />
 
@@ -76,7 +81,7 @@ export function FutureVision() {
 
               <div className="mt-6 pt-4 border-t border-white/10 text-xs text-slate-400 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#40A39C]" />
-                <span>ضمن خطة التوسع والتطوير الاستراتيجي للفريق</span>
+                <span>{isAr ? 'ضمن خطة التوسع والتطوير الاستراتيجي للفريق' : 'Part of Soul Life strategic development roadmap'}</span>
               </div>
             </div>
           );

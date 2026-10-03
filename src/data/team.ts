@@ -101,15 +101,36 @@ export const regionalVolunteersSummary = {
 };
 
 export const featuredContributor: FeaturedContributor = FeaturedContributorSchema.parse({
-  nameAr: 'حسين محمد حسين نصر',
-  nameEn: 'Hussein Mohammad Hussein Naser',
-  title: 'Team Leader · Platform Developer · AI Automation Specialist',
+  nameAr: 'م. حسين محمد حسين ناصر',
+  nameEn: 'Eng. Hussein Mohammad Hussein Naser',
+  title: 'Software Engineer · Digital Systems Architect · Platform Lead',
+  titleAr: 'مهندس برمجيات ومتخصص في بناء وتطوير المواقع والأنظمة الرقمية',
+  titleEn: 'Software Engineer & Specialist in Web and Digital Systems Architecture',
+  roleAr: 'المبرمج والمطور الرئيسي للمنصة والأنظمة الرقمية',
+  roleEn: 'Lead Software Architect & Platform Developer',
+  avatar: '/images/developer-hussein.jpg',
   approvedByTeam: true,
-  affiliation: 'هندسة البرمجيات والذكاء الاصطناعي - جامعة فلسطين',
+  affiliation: 'هندسة البرمجيات والأنظمة الذكية — فلسطين',
+  affiliationEn: 'Software Engineering & Intelligent Digital Systems — Palestine',
   email: 'hussein7.7naser@gmail.com',
   linkedin: 'https://linkedin.com/in/7ussein-naser/',
+  github: 'https://github.com/7usseinNaser/Sol-life',
   instagram: 'https://instagram.com/7ussein.naser/',
-  note: 'بناء المنصة الرقمية والتجربة التفاعلية تطوعاً لدعم رسالة الفريق الطبية في قطاع غزة.',
+  note: 'هندسة وتطوير المنصة الرقمية التفاعلية وفق أحدث المعايير البرمجية والأداء المتكيف (Next.js 15 & Zero Defects)، لدعم رسالة التعليم والتدريب الطبي المجاني في قطاع غزة.',
+  noteEn: 'Architected and engineered the Soul Life interactive digital platform with zero-defect quality and adaptive performance to power clinical medical education in Gaza.',
+  skills: [
+    'Next.js 15 & React 19',
+    'TypeScript & Zod Architecture',
+    'High Performance Web Systems',
+    'Adaptive Scrollytelling Engine',
+    'Zero-Defect Code Quality',
+    'UI/UX Glassmorphism & Aesthetics'
+  ],
+  achievements: [
+    'بناء نظام لغات ثنائي متكامل 100%',
+    'محرك أداء متكيف ذكي للشبكات الضعيفة',
+    'صفر أخطاء وتوافق كامل مع المعايير العالمية'
+  ]
 });
 
 export const featuredTechnicalContributor = {

@@ -1,31 +1,35 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { Eye, Target, Compass, ChevronDown, ChevronUp, CheckCircle2, Sparkles } from 'lucide-react';
 import { SectionHeading } from '@/components/motion/SectionHeading';
 
 export function VisionMissionGoals() {
+  const t = useTranslations('vision');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
   const [goalsExpanded, setGoalsExpanded] = useState(false);
 
   const goals = [
-    'سدّ الفجوة بين التعليم الإلكتروني والتعليم الوجاهي الذي يصنع لدى طلبة الكليات الطبية بيئة تعليمية مميزة.',
-    'إتاحة تدريبات طبية مجانية ومنظمة تغطي شمال ووسط وجنوب قطاع غزة في آنٍ واحد.',
-    'تعزيز العلاقات العامة مع الجامعات والهيئات التدريسية وبناء شراكات فعلية مع المؤسسات الداعمة للعمل الطلابي.',
-    'تطوير مهارات القيادة والعمل الجماعي والإنساني لدى الطلبة المتطوعين أنفسهم.',
-    'توسيع نطاق الخدمات مستقبلًا لتشمل منصة تعليمية رقمية ومنحًا دراسية للطلبة المتفوقين.',
+    t('goal1'),
+    t('goal2'),
+    t('goal3'),
+    t('goal4'),
+    t('goal5'),
   ];
 
   return (
     <section
       id="vision"
-      dir="rtl"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none"
-      aria-label="الرؤية والرسالة والأهداف"
+      dir={isAr ? 'rtl' : 'ltr'}
+      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}
+      aria-label={isAr ? "الرؤية والرسالة والأهداف" : "Vision, Mission and Goals"}
     >
       <SectionHeading
-        kicker="المنطلقات والمبادئ"
-        title="رؤيتنا، رسالتنا، وغاياتنا"
-        subtitle="المبادئ التي تقود كل خطوة ميدانية لفريق سول لايف في خدمة طلبة التخصصات الصحية في غزة"
+        kicker={t('badge')}
+        title={t('title')}
+        subtitle={t('subtitle')}
         align="center"
       />
 
@@ -38,17 +42,17 @@ export function VisionMissionGoals() {
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#40A39C] mb-2 uppercase tracking-wide">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>الطموح الاستراتيجي</span>
+              <span>{isAr ? 'الطموح الاستراتيجي' : 'Strategic Ambition'}</span>
             </div>
             <h3 className="text-2xl font-bold font-heading text-[#08324A] mb-4">
-              رؤيتنا
+              {t('visionTab')}
             </h3>
             <p className="text-sm text-[#4A6572] leading-relaxed font-sans">
-              نسعى أن نكون المبادرة الطلابية الطبية الرائدة في قطاع غزة، وتوفير بيئة تدريبية متكاملة ومبتكرة تُلهم طلبة الكليات الطبية وتُمكّنهم معرفيًا ومهاريًا ليكونوا قادة في العمل الإنساني وصنّاع مستقبل الرعاية الصحية.
+              {t('visionContent')}
             </p>
           </div>
           <div className="mt-6 pt-4 border-t border-[#08324A]/10 text-xs font-semibold text-[#0D5260]">
-            الريادة في العمل الطلابي الصحي
+            {isAr ? 'الريادة في العمل الطلابي الصحي' : 'Leadership in Health Student Action'}
           </div>
         </div>
 
@@ -60,17 +64,17 @@ export function VisionMissionGoals() {
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#40A39C] mb-2 uppercase tracking-wide">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>المهمة والواجب</span>
+              <span>{isAr ? 'المهمة والواجب' : 'Duty & Purpose'}</span>
             </div>
             <h3 className="text-2xl font-bold font-heading text-white mb-4">
-              رسالتنا
+              {t('missionTab')}
             </h3>
             <p className="text-sm text-slate-200 leading-relaxed font-sans">
-              نسعى لتوفير فرص تدريبية وتعليمية مجانية وعالية الجودة لطلبة التخصصات الطبية في جميع محافظات قطاع غزة، من خلال متطوعين وطواقم تدريبية مؤهلة، إيمانًا منّا بأن الصعوبات المادية يجب ألا تكون حاجزًا أمام بناء الكفاءة الطبية.
+              {t('missionContent')}
             </p>
           </div>
           <div className="mt-6 pt-4 border-t border-white/15 text-xs font-semibold text-[#40A39C]">
-            التعليم الطبي المجاني حق لكل طالب
+            {isAr ? 'التعليم الطبي المجاني حق لكل طالب' : 'Free Medical Education for All'}
           </div>
         </div>
 
@@ -82,10 +86,10 @@ export function VisionMissionGoals() {
             </div>
             <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#40A39C] mb-2 uppercase tracking-wide">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>خطة العمل الميدانية</span>
+              <span>{isAr ? 'خطة العمل الميدانية' : 'Field Action Plan'}</span>
             </div>
             <h3 className="text-2xl font-bold font-heading text-[#08324A] mb-4">
-              أهدافنا الخمسة
+              {t('goalsTab')}
             </h3>
             <div className="space-y-3">
               {goals.slice(0, goalsExpanded ? 5 : 2).map((goal, idx) => (
@@ -102,7 +106,7 @@ export function VisionMissionGoals() {
               onClick={() => setGoalsExpanded(!goalsExpanded)}
               className="inline-flex items-center gap-2 text-xs font-bold text-[#0D5260] hover:text-[#40A39C] transition-colors"
             >
-              <span>{goalsExpanded ? 'عرض أقل' : 'عرض كافة الأهداف الخمسة (5)'}</span>
+              <span>{goalsExpanded ? (isAr ? 'عرض أقل' : 'Show less') : (isAr ? 'عرض كافة الأهداف الخمسة (5)' : 'Show all 5 strategic goals')}</span>
               {goalsExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
             </button>
           </div>

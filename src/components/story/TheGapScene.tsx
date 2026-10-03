@@ -1,9 +1,13 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { BookOpen, Stethoscope, Scissors, CheckCircle, ArrowLeftRight } from 'lucide-react';
 
 export function TheGapScene() {
+  const t = useTranslations('gap');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
   const containerRef = useRef<HTMLDivElement>(null);
   const [stitchProgress, setStitchProgress] = useState(0);
 
@@ -28,9 +32,9 @@ export function TheGapScene() {
     <section
       ref={containerRef}
       id="gap"
-      dir="rtl"
+      dir={isAr ? 'rtl' : 'ltr'}
       className="relative w-full h-[220vh] bg-[#03111b] text-white select-none py-12"
-      aria-label="سد الفجوة بين التعليم النظري والممارسة السريرية"
+      aria-label={isAr ? "سد الفجوة بين التعليم النظري والممارسة السريرية" : "Bridging the Gap between Theory and Clinical Practice"}
     >
       {/* Sticky Stage */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-8 py-10">
@@ -38,13 +42,13 @@ export function TheGapScene() {
         <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#40A39C]/40 backdrop-blur-md text-xs font-semibold text-[#40A39C] mb-3">
             <ArrowLeftRight className="w-3.5 h-3.5" />
-            <span>رسالة فريق سول لايف الأساسية</span>
+            <span>{t('badge')}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E4F3F1] to-[#40A39C]">
-            سدّ الفجوة: من النظرية إلى الممارسة
+            {t('title')}
           </h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mt-2 font-sans">
-            الظروف الصعبة يجب ألا تحول دون وصول طالب الطب إلى المهارة العملية الحقيقية التي تصنع منه كادراً مؤهلاً.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -64,21 +68,23 @@ export function TheGapScene() {
                   <BookOpen className="w-6 h-6 text-[#40A39C]" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold font-heading text-slate-200">
-                  التعليم النظري والإلكتروني
+                  {t('theoryTitle')}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
-                  رغم غنى المحتوى الأكاديمي، إلا أن غياب التطبيق المباشر وظروف انقطاع الكهرباء وضعف التواصل السريري يخلق فجوة تدريبية قاسية لدى الطلبة.
+                  {isAr 
+                    ? 'رغم غنى المحتوى الأكاديمي، إلا أن غياب التطبيق المباشر وظروف انقطاع الكهرباء وضعف التواصل السريري يخلق فجوة تدريبية قاسية لدى الطلبة.' 
+                    : 'Despite rich academic theory, the absence of hands-on simulation and clinic disruptions leaves a severe competency gap for students.'}
                 </p>
               </div>
 
               <div className="mt-6 space-y-2 border-t border-white/10 pt-4 text-xs text-slate-400">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80" />
-                  <span>اقتصار على الشاشات والكتب الأكاديمية</span>
+                  <span>{t('theoryItem1')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400/80" />
-                  <span>ندرة الأدوات التدريبية الحقيقية</span>
+                  <span>{t('theoryItem2')}</span>
                 </div>
               </div>
             </div>
@@ -118,21 +124,23 @@ export function TheGapScene() {
                   <Stethoscope className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
-                  التدريب السريري والوجاهي المجاني
+                  {t('practicalTitle')}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-200 mt-2 leading-relaxed">
-                  دورات عملية مكثفة بأدوات حقيقية، إشراف سريري من أطباء اختصاصيين، وتدريب متوازي في المحافظات الثلاث لتمكين كل طالب بيده.
+                  {isAr
+                    ? 'دورات عملية مكثفة بأدوات حقيقية، إشراف سريري من أطباء اختصاصيين، وتدريب متوازي في المحافظات الثلاث لتمكين كل طالب بيده.'
+                    : 'Intensive practical workshops with real instruments, consultant physician mentorship, and concurrent access across Gaza’s three regions.'}
                 </p>
               </div>
 
               <div className="mt-6 space-y-2 border-t border-white/10 pt-4 text-xs text-slate-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-[#40A39C]" />
-                  <span>خياطة وتغريز جراحي بالأدوات الطبية الفعلية</span>
+                  <span>{t('practicalItem1')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-[#40A39C]" />
-                  <span>تغطية متزامنة في خانيونس، الوسطى، وغزة</span>
+                  <span>{t('practicalItem2')}</span>
                 </div>
               </div>
             </div>
@@ -142,7 +150,7 @@ export function TheGapScene() {
         {/* Bottom Banner Note */}
         <div className="relative z-10 max-w-xl mx-auto w-full text-center pt-4">
           <p className="text-xs text-slate-300 font-sans">
-            نسبة اكتمال الربط الميداني:{' '}
+            {isAr ? 'نسبة اكتمال الربط الميداني:' : 'Field Integration Progress:'}{' '}
             <strong className="text-[#40A39C] font-mono font-bold">
               {Math.round(stitchProgress * 100)}%
             </strong>

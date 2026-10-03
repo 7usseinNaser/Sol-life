@@ -2,10 +2,14 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useTranslations, useLocale } from 'next-intl';
 import { boardMembers } from '@/data/team';
 import { Sparkles, Users, Award, ShieldCheck, ArrowDown } from 'lucide-react';
 
 export function ArrivalScene() {
+  const t = useTranslations('arrival');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
@@ -30,13 +34,6 @@ export function ArrivalScene() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Story beats derived from scroll progress
-  // Beat 1: 0 - 15% (Line flattens into road)
-  // Beat 2: 15% - 40% (Ambulance vehicle drives in)
-  // Beat 3: 40% - 55% (Vehicle stops, doors open)
-  // Beat 4: 55% - 85% (Team steps out with role tags)
-  // Beat 5: 85% - 100% (Walk towards training hall, line continues)
-
   // Approved board members to display on role tags (no invented names)
   const featuredVolunteers = boardMembers.slice(0, 4);
 
@@ -44,9 +41,9 @@ export function ArrivalScene() {
     <section
       ref={containerRef}
       id="story"
-      dir="rtl"
+      dir={isAr ? 'rtl' : 'ltr'}
       className="relative w-full h-[280vh] bg-gradient-to-b from-[#041622] via-[#062438] to-[#041622] text-white select-none"
-      aria-label="المشهد القصصي التفاعلي: وصول فريق سول لايف للتدريب الميداني"
+      aria-label={isAr ? "المشهد القصصي التفاعلي: وصول فريق سول لايف للتدريب الميداني" : "Soul Life Team Interactive Arrival Scene"}
     >
       {/* Sticky Viewport Stage */}
       <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden px-4 sm:px-8 py-8">
@@ -62,25 +59,25 @@ export function ArrivalScene() {
         <div className="relative z-10 max-w-4xl mx-auto w-full text-center pt-8">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#40A39C]/40 backdrop-blur-md text-xs font-semibold text-[#40A39C] mb-3 shadow-md">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>مشهد سينمائي رمزي • سيناريو الوصول الميداني</span>
+            <span>{t('badge')}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black font-heading text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E4F3F1] to-[#40A39C]">
-            الفريق يصل ليتدرّب ويُدرّب
+            {t('title')}
           </h2>
           <p className="text-xs sm:text-sm text-slate-300/90 font-sans mt-2 max-w-xl mx-auto">
-            محاكاة فنية رمزية لرحلة متطوعي كليات الطب نحو قاعات التدريب السريري، لسد الفجوة بين المعرفة النظرية والممارسة الميدانية.
+            {t('subtitle')}
           </p>
 
           {/* Mandatory Integrity Note (§3.1) */}
           <div className="inline-flex items-center gap-1.5 mt-2 text-[11px] text-slate-400 bg-white/5 px-3 py-0.5 rounded-full border border-white/10">
             <ShieldCheck className="w-3 h-3 text-[#40A39C]" />
-            <span>تجسيد فني لجهود التدريب الطبي الطلابي، وليس خدمة إسعاف طوارئ.</span>
+            <span>{t('disclaimer')}</span>
           </div>
         </div>
 
         {/* Centerpiece Stage: The Road, Vehicle & Team */}
         <div className="relative z-10 w-full max-w-6xl mx-auto flex-1 flex flex-col items-center justify-center">
-          {/* Slogan Beats ("نتعلّم" -> "نتدرّب" -> "نُلهم") */}
+          {/* Slogan Beats */}
           <div className="absolute top-4 inset-x-0 flex items-center justify-center gap-6 sm:gap-12 text-sm sm:text-xl font-bold font-heading">
             <span
               className={`transition-all duration-500 px-4 py-1.5 rounded-xl border backdrop-blur-md ${
@@ -89,7 +86,7 @@ export function ArrivalScene() {
                   : 'bg-white/5 text-white/40 border-white/10'
               }`}
             >
-              1. نتعلّم
+              {isAr ? '1. نتعلّم' : '1. Learn'}
             </span>
             <span
               className={`transition-all duration-500 px-4 py-1.5 rounded-xl border backdrop-blur-md ${
@@ -98,7 +95,7 @@ export function ArrivalScene() {
                   : 'bg-white/5 text-white/40 border-white/10'
               }`}
             >
-              2. نتدرّب
+              {isAr ? '2. نتدرّب' : '2. Practice'}
             </span>
             <span
               className={`transition-all duration-500 px-4 py-1.5 rounded-xl border backdrop-blur-md ${
@@ -107,7 +104,7 @@ export function ArrivalScene() {
                   : 'bg-white/5 text-white/40 border-white/10'
               }`}
             >
-              3. نُلهم
+              {isAr ? '3. نُلهم' : '3. Inspire'}
             </span>
           </div>
 
@@ -116,7 +113,7 @@ export function ArrivalScene() {
             {/* Cinematic Arrival Backdrop Image */}
             <Image
               src="/images/ambulance-arrival.jpg"
-              alt="وصول سيارة تدريب فريق سول لايف الرمزية في الميدان"
+              alt={isAr ? "وصول سيارة تدريب فريق سول لايف الرمزية في الميدان" : "Soul Life Team Field Training Arrival Vehicle"}
               fill
               className="object-cover object-center filter brightness-90 contrast-105 transition-transform duration-700"
               style={{
@@ -138,7 +135,7 @@ export function ArrivalScene() {
                       isRevealed
                         ? 'opacity-100 translate-y-0 scale-100'
                         : 'opacity-0 translate-y-6 scale-90 pointer-events-none'
-                    } px-3.5 py-2 rounded-2xl bg-[#08324A]/85 border border-[#40A39C]/40 backdrop-blur-md shadow-xl flex items-center gap-2.5 text-right`}
+                    } px-3.5 py-2 rounded-2xl bg-[#08324A]/85 border border-[#40A39C]/40 backdrop-blur-md shadow-xl flex items-center gap-2.5 ${isAr ? 'text-right' : 'text-left'}`}
                   >
                     <span className="w-2 h-2 rounded-full bg-[#40A39C] animate-pulse" />
                     <div>
@@ -146,7 +143,7 @@ export function ArrivalScene() {
                         {member.name}
                       </p>
                       <p className="text-[10px] text-slate-300 font-sans">
-                        {member.roleAr}
+                        {isAr ? member.roleAr : member.roleEn}
                       </p>
                     </div>
                   </div>
@@ -175,11 +172,11 @@ export function ArrivalScene() {
               />
             </svg>
             <div className="flex items-center justify-between w-full text-[11px] text-slate-400 font-sans px-2">
-              <span>انطلاق المسار الطبي</span>
-              <span className="text-[#40A39C] font-semibold">
-                من المعرفة إلى المهارة السريرية الميدانية
+              <span>{t('beat1Title')}</span>
+              <span className="text-[#40A39C] font-semibold text-center">
+                {t('beat2Title')}
               </span>
-              <span>الوصول للقاعات</span>
+              <span>{t('beat3Title')}</span>
             </div>
           </div>
         </div>
@@ -190,7 +187,7 @@ export function ArrivalScene() {
             <span className="font-mono text-[#40A39C] font-bold">
               {Math.round(scrollProgress * 100)}%
             </span>
-            <span>تقدّم سيناريو الوصول</span>
+            <span>{isAr ? 'تقدّم سيناريو الوصول' : 'Arrival Progress'}</span>
           </div>
 
           <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
@@ -201,7 +198,7 @@ export function ArrivalScene() {
           </div>
 
           <div className="flex items-center gap-1 text-[11px] text-slate-400">
-            <span>مرر لأسفل</span>
+            <span>{isAr ? 'مرر لأسفل' : 'Scroll down'}</span>
             <ArrowDown className="w-3 h-3 animate-bounce" />
           </div>
         </div>

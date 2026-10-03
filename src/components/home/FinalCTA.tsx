@@ -2,34 +2,45 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { GraduationCap, Stethoscope, Building2, ArrowLeft, HeartHandshake } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import { GraduationCap, Stethoscope, Building2, ArrowLeft, ArrowRight, HeartHandshake } from 'lucide-react';
 
 export function FinalCTA() {
+  const t = useTranslations('finalCta');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
+
   const audiences = [
     {
       icon: GraduationCap,
-      category: 'طالب في كليات الطب والعلوم الصحية',
-      title: 'ابدأ بالتعلّم وطوّر مهاراتك',
-      desc: 'انضم إلى دوراتنا الميدانية المجانية في محافظتك واكتسب المهارة السريرية العملية بإشراف مباشر.',
-      ctaText: 'استكشف الدورات المتاحة',
+      category: isAr ? 'طالب في كليات الطب والعلوم الصحية' : 'Medical & Health Sciences Student',
+      title: isAr ? 'ابدأ بالتعلّم وطوّر مهاراتك' : 'Sharpen Your Clinical Mastery',
+      desc: isAr 
+        ? 'انضم إلى دوراتنا الميدانية المجانية في محافظتك واكتسب المهارة السريرية العملية بإشراف مباشر.'
+        : 'Join our free hands-on field workshops in your area and acquire clinical dexterity under direct specialist mentorship.',
+      ctaText: t('studentCta'),
       href: '/programs',
       primary: true,
     },
     {
       icon: Stethoscope,
-      category: 'طبيب اختصاصي أو كادر تمريضي',
-      title: 'ساهم بخبرتك وألهم الجيل القادم',
-      desc: 'شارك في الإشراف على الورش العملية ودرب طلبة الكليات الطبية لبناء كفاءات صحية قادرة على العطاء.',
-      ctaText: 'انضم كمدرب متطوع',
+      category: isAr ? 'طبيب اختصاصي أو كادر تمريضي' : 'Specialist Physician or Nurse',
+      title: isAr ? 'ساهم بخبرتك وألهم الجيل القادم' : 'Mentor and Inspire Future Doctors',
+      desc: isAr
+        ? 'شارك في الإشراف على الورش العملية ودرب طلبة الكليات الطبية لبناء كفاءات صحية قادرة على العطاء.'
+        : 'Lead clinical simulation workshops and train rising health students to empower medical resilience across Gaza.',
+      ctaText: t('trainerCta'),
       href: '/contact?role=trainer',
       primary: false,
     },
     {
       icon: Building2,
-      category: 'مؤسسة صحية، أكاديمية، أو داعمة',
-      title: 'تعاون معنا وساند العمل الطلابي',
-      desc: 'نسعى لشراكات مستدامة لاستضافة البرامج وتوفير المستلزمات الطبية والمنح الدراسية للطلبة.',
-      ctaText: 'تواصل للتعاون والشراكة',
+      category: isAr ? 'مؤسسة صحية، أكاديمية، أو داعمة' : 'Health, Academic, or Partner Institution',
+      title: isAr ? 'تعاون معنا وساند العمل الطلابي' : 'Support Youth Healthcare Initiatives',
+      desc: isAr
+        ? 'نسعى لشراكات مستدامة لاستضافة البرامج وتوفير المستلزمات الطبية والمنح الدراسية للطلبة.'
+        : 'Partner with us to host clinical tracks, provide surgical training kits, or sponsor student education.',
+      ctaText: t('partnerCta'),
       href: '/collaborate',
       primary: false,
     },
@@ -38,9 +49,9 @@ export function FinalCTA() {
   return (
     <section
       id="cta"
-      dir="rtl"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none"
-      aria-label="دعوة للمشاركة والتعاون مع فريق سول لايف"
+      dir={isAr ? 'rtl' : 'ltr'}
+      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}
+      aria-label={isAr ? "دعوة للمشاركة والتعاون مع فريق سول لايف" : "Call to Join & Collaborate with Soul Life Team"}
     >
       <div className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-b from-[#08324A] via-[#062438] to-[#041622] text-white border border-[#40A39C]/40 shadow-2xl overflow-hidden">
         {/* Glow Effects */}
@@ -50,13 +61,13 @@ export function FinalCTA() {
         <div className="relative z-10 max-w-3xl mx-auto text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#40A39C]/40 text-[#40A39C] text-xs font-bold mb-4">
             <HeartHandshake className="w-4 h-4" />
-            <span>كُن جزءاً من أثر سول لايف</span>
+            <span>{t('badge')}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black font-heading tracking-tight text-white mb-4">
-            معاً نصنع مستقبل الرعاية الصحية في غزة
+            {t('title')}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto font-sans leading-relaxed">
-            سواء كنت طالباً يبحث عن المعرفة السريرية، أو طبيباً يرغب بنقل خبرته، أو مؤسسة تساند العمل الإنساني، مكانك هنا معنا.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -98,7 +109,11 @@ export function FinalCTA() {
                     }`}
                   >
                     <span>{aud.ctaText}</span>
-                    <ArrowLeft className="w-3.5 h-3.5" />
+                    {isAr ? (
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                    ) : (
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    )}
                   </Link>
                 </div>
               </div>

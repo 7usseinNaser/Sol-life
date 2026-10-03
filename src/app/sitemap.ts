@@ -1,5 +1,7 @@
 import { programsData } from '@/data/programs';
 
+export const dynamic = 'force-static';
+
 export default function sitemap() {
   const baseUrl = 'https://soullife-gaza.org';
   const locales = ['ar', 'en'];

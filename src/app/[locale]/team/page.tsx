@@ -7,10 +7,11 @@ export const metadata: Metadata = {
   title: 'فريقنا | مجلس الإدارة والمتطوعون الميدانيون',
   description: 'تعرف على 30 متطوعاً ومتطوعة من كليات الطب والعلوم الصحية في قطاع غزة ومجلس الإدارة المعتمد والشعب الميدانية الثلاث.',
 };
-import { boardMembers, regionalVolunteersSummary, featuredTechnicalContributor } from '@/data/team';
+import { boardMembers, regionalVolunteersSummary } from '@/data/team';
 import { SectionHeading } from '@/components/motion/SectionHeading';
 import { GlassCard } from '@/components/common/GlassCard';
-import { Users, Shield, Code, Sparkles, MapPin, Award } from 'lucide-react';
+import { VIPDeveloperShowcase } from '@/components/team/VIPDeveloperShowcase';
+import { Users, Shield, MapPin } from 'lucide-react';
 
 export default async function TeamPage({
   params,
@@ -19,13 +20,14 @@ export default async function TeamPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const isAr = locale === 'ar';
 
   return (
-    <div dir="rtl" className="min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none">
+    <div dir={isAr ? 'rtl' : 'ltr'} className={`min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}>
       <SectionHeading
-        kicker="الكوادر والقيادات الطلابية"
-        title="فريق سول لايف"
-        subtitle="30 متطوعاً ومتطوعة من كليات الطب والعلوم الصحية في قطاع غزة يقودون التدريب الميداني المنظم"
+        kicker={isAr ? 'الكوادر والقيادات الطلابية' : 'Student Cadres & Field Leadership'}
+        title={isAr ? 'فريق سول لايف' : 'Soul Life Team'}
+        subtitle={isAr ? '30 متطوعاً ومتطوعة من كليات الطب والعلوم الصحية في قطاع غزة يقودون التدريب الميداني المنظم' : '30 medical and health sciences student volunteers across Gaza orchestrating structured field training'}
         align="center"
       />
 
@@ -154,33 +156,10 @@ export default async function TeamPage({
         </div>
       </div>
 
-      {/* Featured Contributor Credit (§14) */}
-      {featuredTechnicalContributor.approvedByTeam && (
-        <div className="rounded-3xl p-6 sm:p-8 bg-white/70 border border-white/80 shadow-xl backdrop-blur-xl">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#E4F3F1] border border-[#40A39C]/30 text-[#0D5260] flex items-center justify-center shrink-0">
-                <Code className="w-6 h-6 text-[#40A39C]" />
-              </div>
-              <div>
-                <span className="text-[11px] font-bold text-[#40A39C] block">
-                  الإشراف والتطوير التقني (§14)
-                </span>
-                <h3 className="text-base font-bold font-heading text-[#08324A]">
-                  {featuredTechnicalContributor.nameAr}
-                </h3>
-                <p className="text-xs text-[#4A6572]">
-                  {featuredTechnicalContributor.roleAr}
-                </p>
-              </div>
-            </div>
-
-            <div className="text-xs text-slate-500 font-sans">
-              بناء وهندسة المنصة الرقمية وفق معايير الجودة العالمية
-            </div>
-          </div>
-        </div>
-      )}
+      {/* VIP Developer & Software Systems Architect Showcase */}
+      <div id="developer" className="scroll-mt-24">
+        <VIPDeveloperShowcase />
+      </div>
     </div>
   );
 }

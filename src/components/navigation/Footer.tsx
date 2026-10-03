@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
                 />
               </div>
               <div>
-                <span className="font-bold text-xl text-white block">فريق سول لايف</span>
+                <span className="font-bold text-xl text-white block">{common('brandName')}</span>
                 <span className="text-xs text-[#67C0B9] font-medium tracking-wide">
                   Soul Life Medical Team
                 </span>
@@ -193,18 +193,46 @@ export const Footer: React.FC = () => {
             <span>{t('rights')}</span>
           </div>
 
-          {/* Platform Attribution Credit (BRD §14) */}
-          <div className="flex items-center gap-2 text-center md:text-start">
-            <span>{t('developerCredit')}</span>
-            <a
-              href={featuredContributor.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#67C0B9] hover:underline inline-flex items-center gap-0.5"
+          {/* Platform Attribution Credit (BRD §14) - VIP Architect Badge */}
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 text-center md:text-start">
+            <Link
+              href="/team"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D5260]/80 hover:bg-[#40A39C]/30 border border-[#40A39C]/40 text-[#67C0B9] hover:text-white transition-all shadow-sm group"
             >
-              <span>LinkedIn</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+              <div className="w-5 h-5 rounded-full overflow-hidden ring-1 ring-[#40A39C]/60 shrink-0">
+                <Image
+                  src="/images/developer-hussein.jpg"
+                  alt="م. حسين محمد ناصر"
+                  width={20}
+                  height={20}
+                  className="object-cover"
+                />
+              </div>
+              <span className="font-semibold text-xs text-white">
+                {t('developerCredit')}
+              </span>
+            </Link>
+
+            <div className="flex items-center gap-2 text-xs text-[#67C0B9]">
+              <a
+                href={featuredContributor.github || 'https://github.com/7usseinNaser/Sol-life'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors underline-offset-4 hover:underline"
+              >
+                GitHub
+              </a>
+              <span>•</span>
+              <a
+                href={featuredContributor.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors underline-offset-4 hover:underline inline-flex items-center gap-0.5"
+              >
+                <span>LinkedIn</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

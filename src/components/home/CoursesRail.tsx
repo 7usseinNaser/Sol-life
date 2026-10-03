@@ -1,13 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import { programsData } from '@/data/programs';
 import { Program } from '@/schemas/program';
 import { CourseReportModal } from '@/components/home/CourseReportModal';
 import { SectionHeading } from '@/components/motion/SectionHeading';
-import { Sparkles, Calendar, Users, MapPin, ArrowLeft } from 'lucide-react';
+import { Sparkles, Calendar, Users, MapPin, ArrowLeft, ArrowRight } from 'lucide-react';
 
 export function CoursesRail() {
+  const t = useTranslations('courses');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
 
   const completedPrograms = programsData.filter((p) => p.status === 'completed');
@@ -15,14 +19,14 @@ export function CoursesRail() {
   return (
     <section
       id="courses"
-      dir="rtl"
-      className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-right select-none"
-      aria-label="أحدث البرامج والدورات التدريبية المنجزة"
+      dir={isAr ? 'rtl' : 'ltr'}
+      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}
+      aria-label={isAr ? "أحدث البرامج والدورات التدريبية المنجزة" : "Latest Completed Medical Training Programs"}
     >
       <SectionHeading
-        kicker="سجل الإنجاز الميداني المعتمد"
-        title="أحدث الدورات والبرامج المنجزة"
-        subtitle="برامج تدريبية تخصصية مجانية نُفذت في قطاع غزة وفق كشوف رسمية موثقة ومعتمدة"
+        kicker={t('badge')}
+        title={t('title')}
+        subtitle={t('subtitle')}
         align="center"
       />
 
@@ -45,22 +49,30 @@ export function CoursesRail() {
                 {/* Header Pills */}
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E4F3F1] text-[#0D5260] border border-[#40A39C]/30">
-                    {estimate ? 'برنامج القطاع الكامل' : `${prog.editions.length} نسخ منفذة`}
+                    {estimate 
+                      ? (isAr ? 'برنامج القطاع الكامل' : 'All-Gaza Initiative') 
+                      : (isAr ? `${prog.editions.length} نسخ منفذة` : `${prog.editions.length} Cohorts`)}
                   </span>
                   <span className="text-xs font-semibold text-[#40A39C] flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5" />
-                    <span>{prog.defaultLocationLevel}</span>
+                    <span>{isAr ? prog.defaultLocationLevel : 'Gaza Strip'}</span>
                   </span>
                 </div>
 
                 <h3 className="text-xl font-bold font-heading text-[#08324A] group-hover:text-[#0D5260] transition-colors mb-1.5">
-                  {prog.titleAr}
+                  {isAr ? prog.titleAr : prog.titleEn}
                 </h3>
                 <p className="text-xs font-semibold text-[#40A39C] mb-3">
-                  {prog.titleEn}
+                  {isAr ? prog.titleEn : prog.titleAr}
                 </p>
                 <p className="text-xs sm:text-sm text-[#4A6572] leading-relaxed line-clamp-3">
-                  {prog.shortDescription}
+                  {isAr 
+                    ? prog.shortDescription 
+                    : (prog.slug === 'medical-terminology' 
+                      ? 'Intensive foundational training in medical and clinical terminology to facilitate hospital practice and academic coursework.' 
+                      : prog.slug === 'al-taghreez' 
+                      ? 'Hands-on practical training on core surgical suturing techniques using real instruments and silicone tissue models.' 
+                      : 'Advanced surgical suturing techniques and complex wound management under consultant physician mentorship.')}
                 </p>
               </div>
 
@@ -69,15 +81,19 @@ export function CoursesRail() {
                 <div className="flex items-center gap-1.5 font-bold text-[#0D5260]">
                   <Users className="w-4 h-4 text-[#40A39C]" />
                   {estimate ? (
-                    <span>~{estimate} طالب مستفيد</span>
+                    <span>{isAr ? `~${estimate} طالب مستفيد` : `~${estimate} Students Benefited`}</span>
                   ) : (
-                    <span>{totalAccepted} طالب مقبول</span>
+                    <span>{isAr ? `${totalAccepted} طالب مقبول` : `${totalAccepted} Certified Students`}</span>
                   )}
                 </div>
 
                 <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#40A39C] group-hover:text-[#0D5260] transition-colors">
-                  <span>تقرير الدورة الكامل</span>
-                  <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+                  <span>{t('detailsButton')}</span>
+                  {isAr ? (
+                    <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                  )}
                 </div>
               </div>
             </div>

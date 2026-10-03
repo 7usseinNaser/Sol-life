@@ -56,10 +56,10 @@ export const Navbar: React.FC = () => {
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-lg md:text-xl text-[#08324A] tracking-tight group-hover:text-[#40A39C] transition-colors">
-                  فريق سول لايف
+                  {locale === 'ar' ? 'فريق سول لايف' : 'Soul Life Team'}
                 </span>
                 <span className="text-xs text-[#0D5260] font-medium hidden sm:inline-block">
-                  Soul Life Team
+                  {locale === 'ar' ? 'Soul Life Team' : 'Medical Education & Field Health'}
                 </span>
               </div>
             </Link>
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
                             {t('teamOverview')}
                           </div>
                           <div className="text-xs text-[#4A6572] mt-0.5">
-                            مجلس الإدارة والمتطوعون الميدانيون (30 متطوعاً)
+                            {locale === 'ar' ? 'مجلس الإدارة والمتطوعون الميدانيون (30 متطوعاً)' : 'Board of Directors & Field Volunteers (30 Members)'}
                           </div>
                         </div>
                       </Link>
@@ -140,7 +140,7 @@ export const Navbar: React.FC = () => {
                             {t('committees')}
                           </div>
                           <div className="text-xs text-[#4A6572] mt-0.5">
-                            العلاقات، المشاريع، الإعلام، والشعب الميدانية
+                            {locale === 'ar' ? 'العلاقات، المشاريع، الإعلام، والشعب الميدانية' : 'PR, Projects, Media & Field Wings'}
                           </div>
                         </div>
                       </Link>
@@ -158,7 +158,34 @@ export const Navbar: React.FC = () => {
                             {t('behindTheScenes')}
                           </div>
                           <div className="text-xs text-[#4A6572] mt-0.5">
-                            تجهيز القاعات، الأدوات الجراحية، وجهود الميدان
+                            {locale === 'ar' ? 'تجهيز القاعات، الأدوات الجراحية، وجهود الميدان' : 'Hall prep, surgical tools, and field efforts'}
+                          </div>
+                        </div>
+                      </Link>
+
+                      {/* VIP Developer Showcase Link */}
+                      <Link
+                        href="/team#developer"
+                        className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-[#08324A]/5 to-[#40A39C]/10 border border-[#40A39C]/20 hover:bg-[#40A39C]/15 transition-all group"
+                        onClick={() => setMegaMenuOpen(false)}
+                      >
+                        <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-[#40A39C]/50 shrink-0">
+                          <Image
+                            src="/images/developer-hussein.jpg"
+                            alt="م. حسين ناصر"
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-[#08324A] group-hover:text-[#40A39C] flex items-center gap-1.5">
+                            <span>{locale === 'ar' ? 'م. حسين محمد ناصر' : 'Eng. Hussein Naser'}</span>
+                            <span className="text-[10px] font-mono text-[#0D5260] bg-[#40A39C]/20 px-1.5 py-0.2 rounded font-bold">
+                              {locale === 'ar' ? 'المطور' : 'Architect'}
+                            </span>
+                          </div>
+                          <div className="text-xs text-[#4A6572] mt-0.5">
+                            {locale === 'ar' ? 'مهندس البرمجيات ومطور المنصة الرقمية' : 'Lead Software & Systems Architect'}
                           </div>
                         </div>
                       </Link>

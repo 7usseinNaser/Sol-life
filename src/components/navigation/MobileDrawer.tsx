@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { X, HeartHandshake, Phone, Mail, Instagram, ChevronLeft } from 'lucide-react';
 
@@ -14,6 +14,8 @@ interface MobileDrawerProps {
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
   const t = useTranslations('nav');
   const common = useTranslations('common');
+  const locale = useLocale();
+  const isAr = locale === 'ar';
 
   if (!isOpen) return null;
 
@@ -34,20 +36,22 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               <div className="w-10 h-10 rounded-full overflow-hidden bg-white p-0.5 ring-1 ring-[#0D5260]/15">
                 <Image
                   src="/images/logo.png"
-                  alt="سول لايف"
+                  alt={isAr ? 'سول لايف' : 'Soul Life'}
                   width={40}
                   height={40}
                   className="object-contain"
                 />
               </div>
-              <span className="font-bold text-[#08324A] text-lg">فريق سول لايف</span>
+              <span className="font-bold text-[#08324A] text-lg">
+                {isAr ? 'فريق سول لايف' : 'Soul Life Team'}
+              </span>
             </div>
 
             <button
               type="button"
               onClick={onClose}
               className="p-2 rounded-xl text-[#08324A] hover:bg-white/80 transition-colors"
-              aria-label="إغلاق القائمة"
+              aria-label={isAr ? 'إغلاق القائمة' : 'Close menu'}
             >
               <X className="w-5 h-5" />
             </button>
@@ -93,7 +97,9 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
                 className="flex items-center justify-between p-2 rounded-lg text-sm text-[#08324A] hover:bg-white hover:text-[#40A39C]"
               >
                 <span>{t('teamOverview')}</span>
-                <span className="text-xs text-[#4A6572] bg-[#E4F3F1] px-2 py-0.5 rounded-full">30 متطوعاً</span>
+                <span className="text-xs text-[#4A6572] bg-[#E4F3F1] px-2 py-0.5 rounded-full">
+                  {isAr ? '30 متطوعاً' : '30 Volunteers'}
+                </span>
               </Link>
               <Link
                 href="/committees"

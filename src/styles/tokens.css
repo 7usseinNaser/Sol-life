@@ -48,6 +48,11 @@
   --radius-lg: 24px;
   --radius-xl: 32px;
   --radius-full: 9999px;
+
+  /* Typography Fonts */
+  --font-ibm-arabic: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+  --font-readex: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 /* Fallback for browsers not supporting backdrop-filter */

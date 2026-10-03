@@ -1,5 +1,3 @@
-'use server';
-
 import { CollaborateFormSchema, ContactFormSchema } from '@/schemas/contact';
 
 export interface ActionResponse {
