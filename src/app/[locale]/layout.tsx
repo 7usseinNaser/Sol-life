@@ -8,6 +8,8 @@ import { ibmPlexArabic, readexPro, inter } from '@/styles/fonts';
 import '@/styles/globals.css';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Footer } from '@/components/navigation/Footer';
+import { MotionProvider } from '@/context/MotionContext';
+import { AdaptiveMotionController } from '@/components/motion/AdaptiveMotionController';
 
 export async function generateMetadata({
   params,
@@ -172,11 +174,14 @@ export default async function LocaleLayout({
         </a>
 
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          <main id="main-content" className="flex-1 pt-24">
-            {children}
-          </main>
-          <Footer />
+          <MotionProvider>
+            <Navbar />
+            <main id="main-content" className="flex-1 pt-24">
+              {children}
+            </main>
+            <Footer />
+            <AdaptiveMotionController />
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -3,19 +3,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
+import { useMotion } from '@/context/MotionContext';
 import { boardMembers } from '@/data/team';
-import { Sparkles, Users, Award, ShieldCheck, ArrowDown } from 'lucide-react';
+import { Sparkles, ShieldCheck, ArrowDown } from 'lucide-react';
 
 export function ArrivalScene() {
   const t = useTranslations('arrival');
   const locale = useLocale();
   const isAr = locale === 'ar';
+  const { isLite } = useMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   useEffect(() => {
     setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+    if (isLite) return;
 
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -32,11 +36,89 @@ export function ArrivalScene() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isLite]);
 
   // Approved board members to display on role tags (no invented names)
   const featuredVolunteers = boardMembers.slice(0, 4);
+  const shouldBeStatic = isLite || isReducedMotion;
 
+  // LITE MODE LAYOUT (Fast, zero scroll trap, low-bandwidth & instant battery-safe)
+  if (shouldBeStatic) {
+    return (
+      <section
+        id="story"
+        dir={isAr ? 'rtl' : 'ltr'}
+        className="relative w-full py-20 px-4 sm:px-8 bg-gradient-to-b from-[#041622] via-[#062438] to-[#041622] text-white select-none"
+        aria-label={isAr ? "مشهد وصول فريق سول لايف للتدريب الميداني" : "Soul Life Team Arrival Scene"}
+      >
+        <div className="max-w-5xl mx-auto space-y-10">
+          {/* Header */}
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#40A39C]/40 text-xs font-semibold text-[#40A39C] mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t('badge')}</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-black font-heading text-white">
+              {t('title')}
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 max-w-xl mx-auto">
+              {t('subtitle')}
+            </p>
+            <div className="inline-flex items-center gap-1.5 mt-2 text-[11px] text-slate-400 bg-white/5 px-3 py-0.5 rounded-full border border-white/10">
+              <ShieldCheck className="w-3 h-3 text-[#40A39C]" />
+              <span>{t('disclaimer')}</span>
+            </div>
+          </div>
+
+          {/* Slogan Beats */}
+          <div className="flex items-center justify-center gap-4 sm:gap-8 text-sm sm:text-lg font-bold font-heading">
+            <span className="px-4 py-1.5 rounded-xl bg-[#40A39C] text-[#08324A] font-bold shadow-md">
+              {isAr ? '1. نتعلّم' : '1. Learn'}
+            </span>
+            <span className="px-4 py-1.5 rounded-xl bg-[#40A39C] text-[#08324A] font-bold shadow-md">
+              {isAr ? '2. نتدرّب' : '2. Practice'}
+            </span>
+            <span className="px-4 py-1.5 rounded-xl bg-[#40A39C] text-[#08324A] font-bold shadow-md">
+              {isAr ? '3. نُلهم' : '3. Inspire'}
+            </span>
+          </div>
+
+          {/* Visual Frame */}
+          <div className="relative w-full h-80 sm:h-96 rounded-3xl overflow-hidden border border-white/20 bg-[#08324A]/40 shadow-2xl">
+            <Image
+              src="/images/ambulance-arrival.jpg"
+              alt={isAr ? "وصول سيارة تدريب فريق سول لايف الرمزية في الميدان" : "Soul Life Team Field Training Arrival Vehicle"}
+              fill
+              className="object-cover object-center filter brightness-95"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#08324A]/90 via-[#08324A]/30 to-transparent" />
+
+            {/* Stepping out figures */}
+            <div className="absolute bottom-6 inset-x-4 sm:inset-x-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              {featuredVolunteers.map((member) => (
+                <div
+                  key={member.id}
+                  className={`px-3.5 py-2 rounded-2xl bg-[#08324A]/90 border border-[#40A39C]/50 shadow-xl flex items-center gap-2.5 ${isAr ? 'text-right' : 'text-left'}`}
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#40A39C]" />
+                  <div>
+                    <p className="text-xs font-bold text-white font-heading">
+                      {member.name}
+                    </p>
+                    <p className="text-[10px] text-slate-300 font-sans">
+                      {isAr ? member.roleAr : member.roleEn}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // ULTRA MODE LAYOUT (300vh Scrollytelling with scrubbed visuals)
   return (
     <section
       ref={containerRef}
@@ -51,7 +133,6 @@ export function ArrivalScene() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[#40A39C]/10 rounded-full blur-[140px]" />
           <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-[#0D5260]/20 rounded-full blur-[120px]" />
-          {/* Subtle Skyline silhouette layer */}
           <div className="absolute bottom-24 inset-x-0 h-40 bg-[linear-gradient(to_top,rgba(8,50,74,0.4),transparent)] opacity-60" />
         </div>
 
@@ -68,14 +149,13 @@ export function ArrivalScene() {
             {t('subtitle')}
           </p>
 
-          {/* Mandatory Integrity Note (§3.1) */}
           <div className="inline-flex items-center gap-1.5 mt-2 text-[11px] text-slate-400 bg-white/5 px-3 py-0.5 rounded-full border border-white/10">
             <ShieldCheck className="w-3 h-3 text-[#40A39C]" />
             <span>{t('disclaimer')}</span>
           </div>
         </div>
 
-        {/* Centerpiece Stage: The Road, Vehicle & Team */}
+        {/* Centerpiece Stage: Vehicle & Team */}
         <div className="relative z-10 w-full max-w-6xl mx-auto flex-1 flex flex-col items-center justify-center">
           {/* Slogan Beats */}
           <div className="absolute top-4 inset-x-0 flex items-center justify-center gap-6 sm:gap-12 text-sm sm:text-xl font-bold font-heading">
@@ -110,7 +190,6 @@ export function ArrivalScene() {
 
           {/* Main Visual Frame */}
           <div className="relative w-full max-w-4xl h-64 sm:h-80 md:h-96 rounded-3xl overflow-hidden border border-white/20 bg-[#08324A]/40 backdrop-blur-xl shadow-2xl flex items-center justify-center mt-6">
-            {/* Cinematic Arrival Backdrop Image */}
             <Image
               src="/images/ambulance-arrival.jpg"
               alt={isAr ? "وصول سيارة تدريب فريق سول لايف الرمزية في الميدان" : "Soul Life Team Field Training Arrival Vehicle"}
@@ -126,7 +205,7 @@ export function ArrivalScene() {
             <div className="absolute bottom-6 inset-x-4 sm:inset-x-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               {featuredVolunteers.map((member, idx) => {
                 const threshold = 0.5 + idx * 0.09;
-                const isRevealed = scrollProgress >= threshold || isReducedMotion;
+                const isRevealed = scrollProgress >= threshold;
 
                 return (
                   <div
@@ -152,7 +231,7 @@ export function ArrivalScene() {
             </div>
           </div>
 
-          {/* The Pulse Line morphing into Road */}
+          {/* Pulse Line morphing into Road */}
           <div className="w-full max-w-4xl mt-6 relative flex flex-col items-center">
             <svg
               viewBox="0 0 800 50"
