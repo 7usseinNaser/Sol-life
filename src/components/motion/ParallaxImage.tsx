@@ -23,14 +23,22 @@ export const ParallaxImage: React.FC<ParallaxImageProps> = ({
   useEffect(() => {
     setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-      if (rect.top < windowHeight && rect.bottom > 0) {
-        const centerDistance = rect.top + rect.height / 2 - windowHeight / 2;
-        setOffsetY(centerDistance * speed);
+            if (rect.top < windowHeight && rect.bottom > 0) {
+              const centerDistance = rect.top + rect.height / 2 - windowHeight / 2;
+              setOffsetY(centerDistance * speed);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

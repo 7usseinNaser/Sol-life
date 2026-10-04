@@ -49,27 +49,31 @@ export const ScrollScene: React.FC<ScrollSceneProps> = ({
       return;
     }
 
+    let ticking = false;
     const handleScroll = () => {
-      const el = containerRef.current;
-      if (!el) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const el = containerRef.current;
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            const containerHeight = el.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const scrollableDistance = containerHeight - windowHeight;
 
-      const rect = el.getBoundingClientRect();
-      const containerHeight = el.offsetHeight;
-      const windowHeight = window.innerHeight;
-      const scrollableDistance = containerHeight - windowHeight;
-
-      if (scrollableDistance <= 0) {
-        setProgress(1);
-        onProgress?.(1);
-        return;
+            if (scrollableDistance <= 0) {
+              setProgress(1);
+              onProgress?.(1);
+            } else {
+              const scrolled = -rect.top;
+              const calculatedProgress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
+              setProgress(calculatedProgress);
+              onProgress?.(calculatedProgress);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      // Calculate progress relative to container viewport entering and exiting
-      const scrolled = -rect.top;
-      const calculatedProgress = Math.min(Math.max(scrolled / scrollableDistance, 0), 1);
-
-      setProgress(calculatedProgress);
-      onProgress?.(calculatedProgress);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

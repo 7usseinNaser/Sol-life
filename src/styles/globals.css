@@ -21,8 +21,6 @@
     background-color: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-ibm-arabic), var(--font-readex), system-ui, -apple-system, sans-serif;
-    transition: background-color var(--duration-normal) var(--ease-standard),
-                color var(--duration-normal) var(--ease-standard);
   }
 
   /* Custom Medical Scrollbar */

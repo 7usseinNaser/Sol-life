@@ -20,17 +20,24 @@ export function ArrivalScene() {
     setIsReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     if (isLite) return;
-
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const totalDist = rect.height - windowHeight;
-      const currentScroll = -rect.top;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const totalDist = rect.height - windowHeight;
+            const currentScroll = -rect.top;
 
-      let progress = currentScroll / totalDist;
-      progress = Math.max(0, Math.min(1, progress));
-      setScrollProgress(progress);
+            let progress = currentScroll / totalDist;
+            progress = Math.max(0, Math.min(1, progress));
+            setScrollProgress(progress);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

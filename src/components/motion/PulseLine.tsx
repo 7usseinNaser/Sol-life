@@ -45,11 +45,18 @@ export const PulseLine: React.FC<PulseLineProps> = ({
       return;
     }
 
+    let ticking = false;
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        const current = window.scrollY / totalScroll;
-        setScrollProgress(Math.min(Math.max(current, 0), 1));
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalScroll > 0) {
+            const current = window.scrollY / totalScroll;
+            setScrollProgress(Math.min(Math.max(current, 0), 1));
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

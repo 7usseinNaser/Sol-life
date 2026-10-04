@@ -22,22 +22,30 @@ export function ThreeRegionsScene() {
 
     if (isLite) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const total = rect.height - windowHeight;
-      const current = -rect.top;
-      let progress = current / total;
-      progress = Math.max(0, Math.min(1, progress));
-      setScrollProgress(progress);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const total = rect.height - windowHeight;
+            const current = -rect.top;
+            let progress = current / total;
+            progress = Math.max(0, Math.min(1, progress));
+            setScrollProgress(progress);
 
-      if (progress < 0.33) {
-        setActiveStep(0);
-      } else if (progress < 0.66) {
-        setActiveStep(1);
-      } else {
-        setActiveStep(2);
+            if (progress < 0.33) {
+              setActiveStep(0);
+            } else if (progress < 0.66) {
+              setActiveStep(1);
+            } else {
+              setActiveStep(2);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

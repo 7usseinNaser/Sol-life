@@ -19,8 +19,16 @@ export const Navbar: React.FC = () => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 20;
+          setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -31,15 +39,33 @@ export const Navbar: React.FC = () => {
   const isHome = pathname === '/' || pathname === `/${locale}` || pathname === `/${locale}/`;
   const isDarkHero = !isScrolled && isHome;
 
+  const isActive = (path: string) => {
+    const current = pathname.replace(/^\/(ar|en)/, '') || '/';
+    if (path === '/') return current === '/';
+    return current.startsWith(path);
+  };
+
+  const getLinkClass = (path: string) => {
+    const active = isActive(path);
+    if (isDarkHero) {
+      return active
+        ? 'px-3 py-2 text-sm font-semibold rounded-lg text-[#00E5C9] bg-white/15 ring-1 ring-[#00E5C9]/40 shadow-sm'
+        : 'px-3 py-2 text-sm font-medium rounded-lg text-white/90 hover:text-white hover:bg-white/10 transition-all';
+    }
+    return active
+      ? 'px-3 py-2 text-sm font-semibold rounded-lg text-[#008B7A] bg-[#00E5C9]/15 ring-1 ring-[#00E5C9]/30 shadow-sm'
+      : 'px-3 py-2 text-sm font-medium rounded-lg text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/70 transition-all';
+  };
+
   return (
     <>
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'glass-nav py-3'
+            ? 'glass-nav py-3 shadow-md'
             : isHome
-              ? 'bg-transparent py-5'
-              : 'glass-nav py-4'
+              ? 'bg-gradient-to-b from-[#041B2D]/85 via-[#041B2D]/40 to-transparent py-4 backdrop-blur-[1px]'
+              : 'glass-nav py-3.5 shadow-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,31 +103,19 @@ export const Navbar: React.FC = () => {
             <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
               <Link
                 href="/"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/')}
               >
                 {t('home')}
               </Link>
               <Link
                 href="/about"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/about')}
               >
                 {t('about')}
               </Link>
               <Link
                 href="/programs"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/programs')}
               >
                 {t('programs')}
               </Link>
@@ -116,9 +130,13 @@ export const Navbar: React.FC = () => {
                   type="button"
                   onClick={() => setMegaMenuOpen((prev) => !prev)}
                   className={`px-3 py-2 text-sm font-medium rounded-lg transition-all flex items-center gap-1.5 focus:outline-none ${
-                    isDarkHero
-                      ? 'text-white/90 hover:text-white hover:bg-white/10'
-                      : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
+                    isActive('/team') || isActive('/committees') || isActive('/behind-the-scenes')
+                      ? isDarkHero
+                        ? 'text-[#00E5C9] bg-white/15 ring-1 ring-[#00E5C9]/40 font-semibold'
+                        : 'text-[#008B7A] bg-[#00E5C9]/15 ring-1 ring-[#00E5C9]/30 font-semibold'
+                      : isDarkHero
+                        ? 'text-white/90 hover:text-white hover:bg-white/10'
+                        : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/70'
                   }`}
                   aria-expanded={megaMenuOpen}
                 >
@@ -221,41 +239,25 @@ export const Navbar: React.FC = () => {
 
               <Link
                 href="/library"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/library')}
               >
                 {t('library')}
               </Link>
               <Link
                 href="/gallery"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/gallery')}
               >
                 {t('gallery')}
               </Link>
               <Link
                 href="/voices"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/voices')}
               >
                 {t('voices')}
               </Link>
               <Link
                 href="/contact"
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                  isDarkHero
-                    ? 'text-white/90 hover:text-white hover:bg-white/10'
-                    : 'text-[var(--color-navy)] hover:text-[var(--color-teal)] hover:bg-white/60'
-                }`}
+                className={getLinkClass('/contact')}
               >
                 {t('contact')}
               </Link>
@@ -266,7 +268,11 @@ export const Navbar: React.FC = () => {
               <Link
                 href={pathname.replace(/^\/(ar|en)/, '') || '/'}
                 locale={otherLocale}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--color-deep-teal)] bg-white/70 hover:bg-white hover:text-[var(--color-navy)] border border-white/60 transition-all shadow-sm"
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shadow-sm ${
+                  isDarkHero
+                    ? 'text-white bg-white/10 hover:bg-white/20 border border-white/20'
+                    : 'text-[var(--color-navy)] bg-white/80 hover:bg-white border border-slate-200/80 hover:shadow'
+                }`}
               >
                 <Globe className="w-3.5 h-3.5" />
                 <span>{otherLocale === 'ar' ? 'العربية' : 'English'}</span>
@@ -274,9 +280,9 @@ export const Navbar: React.FC = () => {
 
               <Link
                 href="/collaborate"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[var(--color-navy)] via-[var(--color-deep-teal)] to-[var(--color-teal-vibrant)] hover:opacity-95 shadow-md shadow-[var(--color-navy)]/15 hover:shadow-lg hover:shadow-[var(--color-teal-vibrant)]/25 transition-all active:scale-[0.98] border border-white/20"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-[#041B2D] bg-gradient-to-r from-[#00D2BA] via-[#00E5C9] to-[#0EA5E9] hover:brightness-105 shadow-md shadow-[#00E5C9]/25 hover:shadow-lg hover:shadow-[#00E5C9]/40 transition-all active:scale-[0.98] border border-white/40"
               >
-                <HeartHandshake className="w-4 h-4" />
+                <HeartHandshake className="w-4 h-4 text-[#041B2D]" />
                 <span>{common('collaborate')}</span>
               </Link>
             </div>
@@ -286,15 +292,23 @@ export const Navbar: React.FC = () => {
               <Link
                 href={pathname.replace(/^\/(ar|en)/, '') || '/'}
                 locale={otherLocale}
-                className="p-2 rounded-lg text-[#0D5260] bg-white/60 border border-white/50 text-xs font-bold"
+                className={`p-2 rounded-lg text-xs font-bold transition-all ${
+                  isDarkHero
+                    ? 'text-white bg-white/10 border border-white/20'
+                    : 'text-[#041B2D] bg-white/80 border border-slate-200'
+                }`}
               >
-                {otherLocale === 'ar' ? 'عربي' : 'EN'}
+                {otherLocale === 'ar' ? 'EN' : 'عربي'}
               </Link>
 
               <button
                 type="button"
                 onClick={() => setMobileDrawerOpen(true)}
-                className="p-2.5 rounded-xl text-[#08324A] hover:text-[#40A39C] bg-white/70 border border-white/60 shadow-sm focus:outline-none"
+                className={`p-2.5 rounded-xl transition-all shadow-sm focus:outline-none ${
+                  isDarkHero
+                    ? 'text-white bg-white/10 border border-white/20 hover:bg-white/20'
+                    : 'text-[#041B2D] hover:text-[var(--color-teal)] bg-white/80 border border-slate-200'
+                }`}
                 aria-label="القائمة الرئيسية"
               >
                 <Menu className="w-6 h-6" />

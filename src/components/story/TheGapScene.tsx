@@ -19,15 +19,23 @@ export function TheGapScene() {
 
     if (isLite) return;
 
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const total = rect.height - windowHeight;
-      const current = -rect.top;
-      let progress = current / total;
-      progress = Math.max(0, Math.min(1, progress));
-      setStitchProgress(progress);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const total = rect.height - windowHeight;
+            const current = -rect.top;
+            let progress = current / total;
+            progress = Math.max(0, Math.min(1, progress));
+            setStitchProgress(progress);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

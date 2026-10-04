@@ -160,9 +160,9 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
           <Link
             href="/collaborate"
             onClick={onClose}
-            className="w-full flex items-center justify-center gap-2 p-3.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-[#08324A] via-[#0D5260] to-[#40A39C] shadow-lg shadow-[#08324A]/20"
+            className="w-full flex items-center justify-center gap-2 p-3.5 rounded-xl text-sm font-bold text-[#041B2D] bg-gradient-to-r from-[#00D2BA] via-[#00E5C9] to-[#0EA5E9] shadow-lg shadow-[#00E5C9]/25 hover:brightness-105 active:scale-[0.98] transition-all"
           >
-            <HeartHandshake className="w-4 h-4" />
+            <HeartHandshake className="w-4 h-4 text-[#041B2D]" />
             <span>{common('collaborate')}</span>
           </Link>
 

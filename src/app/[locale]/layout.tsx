@@ -176,7 +176,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <MotionProvider>
             <Navbar />
-            <main id="main-content" className="flex-1 pt-24">
+            <main id="main-content" className="flex-1">
               {children}
             </main>
             <Footer />
