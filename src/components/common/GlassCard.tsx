@@ -16,9 +16,9 @@ export const GlassCard: React.FC<GlassCardProps> = ({
   ...props
 }) => {
   const variantStyles = {
-    light: 'glass-panel-light text-[#0F2A3A]',
-    dark: 'glass-panel-dark text-white',
-    subtle: 'bg-white/40 backdrop-blur-md border border-white/30 text-[#0F2A3A]',
+    light: 'glass-panel-light text-[var(--color-ink)] border-[var(--glass-border-light)]',
+    dark: 'glass-panel-dark text-white border-[var(--glass-border-dark)]',
+    subtle: 'bg-white/60 dark:bg-[#082638]/60 backdrop-blur-md border border-[var(--color-border)] text-[var(--color-ink)] shadow-sm',
   };
 
   return (
@@ -26,7 +26,7 @@ export const GlassCard: React.FC<GlassCardProps> = ({
       className={clsx(
         'rounded-2xl p-6 transition-all duration-300',
         variantStyles[variant],
-        hoverEffect && 'glass-card-hover cursor-pointer',
+        hoverEffect && 'glass-card-hover cursor-pointer hover:border-[var(--color-teal)]/40',
         className
       )}
       {...props}

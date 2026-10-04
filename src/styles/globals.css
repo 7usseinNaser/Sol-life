@@ -12,6 +12,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
   }
 
   body {
@@ -20,12 +21,34 @@
     background-color: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-ibm-arabic), var(--font-readex), system-ui, -apple-system, sans-serif;
+    transition: background-color var(--duration-normal) var(--ease-standard),
+                color var(--duration-normal) var(--ease-standard);
+  }
+
+  /* Custom Medical Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(13, 82, 96, 0.25);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-teal);
   }
 
   /* Accessible focus rings */
   :focus-visible {
-    outline: 2px solid var(--color-teal);
+    outline: 2px solid var(--color-teal-vibrant);
     outline-offset: 3px;
+    border-radius: var(--radius-xs);
   }
 
   /* Skip to content link */
@@ -47,7 +70,7 @@
   }
 }
 
-/* Glass Components */
+/* Custom Component & Utility Classes */
 .glass-panel-light {
   background: var(--glass-bg-light);
   backdrop-filter: blur(var(--glass-blur-md)) saturate(150%);
@@ -66,15 +89,20 @@
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
   border-bottom: 1px solid rgba(13, 82, 96, 0.08);
   box-shadow: 0 4px 20px -2px rgba(8, 50, 74, 0.05);
 }
 
+.dark .glass-nav {
+  background: rgba(5, 26, 38, 0.85);
+  border-bottom: 1px solid rgba(64, 163, 156, 0.15);
+}
+
 .glass-card-hover {
-  transition: transform var(--duration-normal) var(--ease-standard),
+  transition: transform var(--duration-normal) var(--ease-spring),
               box-shadow var(--duration-normal) var(--ease-standard),
               border-color var(--duration-normal) var(--ease-standard);
 }
@@ -82,10 +110,32 @@
 .glass-card-hover:hover {
   transform: translateY(-4px);
   box-shadow: var(--glass-shadow-floating);
-  border-color: rgba(64, 163, 156, 0.4);
+  border-color: rgba(23, 157, 147, 0.4);
+}
+
+/* Medical ECG Heartbeat Animation */
+@keyframes ecgPulse {
+  0% {
+    opacity: 0.3;
+    transform: scaleX(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.02);
+    box-shadow: var(--shadow-glow-teal);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scaleX(0.98);
+  }
+}
+
+.animate-ecg-pulse {
+  animation: ecgPulse 2.5s infinite ease-in-out;
 }
 
 /* Tabular numbers for accurate data presentation */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
