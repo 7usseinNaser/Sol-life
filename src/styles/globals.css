@@ -72,33 +72,33 @@
 
 /* Custom Component & Utility Classes */
 .glass-panel-light {
-  background: var(--glass-bg-light);
-  backdrop-filter: blur(var(--glass-blur-md)) saturate(150%);
-  -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(150%);
-  border: 1px solid var(--glass-border-light);
-  box-shadow: var(--glass-shadow);
+  background: var(--color-surface);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card-elevated);
 }
 
 .glass-panel-dark {
   background: var(--glass-bg-dark);
-  backdrop-filter: blur(var(--glass-blur-lg)) saturate(150%);
-  -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(150%);
+  backdrop-filter: blur(var(--glass-blur-lg)) saturate(170%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(170%);
   border: 1px solid var(--glass-border-dark);
-  box-shadow: var(--glass-shadow-floating);
+  box-shadow: var(--shadow-card-dark);
   color: #ffffff;
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
-  -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(160%);
-  border-bottom: 1px solid rgba(13, 82, 96, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(8, 50, 74, 0.05);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-md)) saturate(180%);
+  border-bottom: 1px solid rgba(4, 27, 45, 0.08);
+  box-shadow: 0 4px 25px -4px rgba(4, 27, 45, 0.07);
 }
 
 .dark .glass-nav {
-  background: rgba(5, 26, 38, 0.85);
-  border-bottom: 1px solid rgba(64, 163, 156, 0.15);
+  background: rgba(4, 27, 45, 0.95);
+  border-bottom: 1px solid rgba(0, 229, 201, 0.2);
 }
 
 .glass-card-hover {
@@ -108,30 +108,30 @@
 }
 
 .glass-card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--glass-shadow-floating);
-  border-color: rgba(23, 157, 147, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(0, 191, 165, 0.2), 0 0 15px rgba(0, 229, 201, 0.15);
+  border-color: var(--color-teal-vibrant);
 }
 
 /* Medical ECG Heartbeat Animation */
 @keyframes ecgPulse {
   0% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scaleX(0.98);
   }
   50% {
     opacity: 1;
     transform: scaleX(1.02);
-    box-shadow: var(--shadow-glow-teal);
+    box-shadow: var(--shadow-glow-cyan);
   }
   100% {
-    opacity: 0.3;
+    opacity: 0.4;
     transform: scaleX(0.98);
   }
 }
 
 .animate-ecg-pulse {
-  animation: ecgPulse 2.5s infinite ease-in-out;
+  animation: ecgPulse 2.2s infinite ease-in-out;
 }
 
 /* Tabular numbers for accurate data presentation */

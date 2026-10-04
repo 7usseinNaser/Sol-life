@@ -18,9 +18,9 @@ export function CoursesRail() {
 
   return (
     <section
-      id="courses"
+      id="programs"
       dir={isAr ? 'rtl' : 'ltr'}
-      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto ${isAr ? 'text-right' : 'text-left'} select-none`}
+      className={`py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-24 ${isAr ? 'text-right' : 'text-left'} select-none`}
       aria-label={isAr ? "أحدث البرامج والدورات التدريبية المنجزة" : "Latest Completed Medical Training Programs"}
     >
       <SectionHeading

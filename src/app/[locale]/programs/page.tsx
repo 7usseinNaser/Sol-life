@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { programsData } from '@/data/programs';
 import { ProgramStatus } from '@/schemas/program';
 import { SectionHeading } from '@/components/motion/SectionHeading';

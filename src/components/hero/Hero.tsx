@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import { MagneticButton } from '@/components/motion/MagneticButton';
 import { RegionCarousel } from '@/components/hero/RegionCarousel';
@@ -34,10 +34,10 @@ export function Hero() {
       className="relative min-h-screen pt-28 pb-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-[#051c2a] via-[#08324A] to-[#041622] text-white"
       aria-label={isAr ? "الواجهة الرئيسية لفريق سول لايف" : "Soul Life Team Hero Section"}
     >
-      {/* Background Ambient Lighting with Pulse Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-[var(--color-teal-vibrant)]/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />
-      <div className="absolute top-1/3 right-10 w-[380px] h-[380px] bg-[var(--color-deep-teal)]/35 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-[var(--color-navy-light)]/25 rounded-full blur-[90px] pointer-events-none" />
+      {/* Background Ambient Lighting with Vibrant Electric Cyan */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[var(--color-teal-vibrant)]/20 rounded-full blur-[150px] pointer-events-none animate-pulse" />
+      <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[var(--color-blue-electric)]/25 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-[var(--color-teal)]/20 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Oversized Arabic Display Word "سول لايف" Behind Subject */}
       <div
@@ -47,51 +47,51 @@ export function Hero() {
           transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
         }}
       >
-        <span className="text-[17vw] font-black tracking-tighter text-white/[0.04] md:text-white/[0.05] leading-none whitespace-nowrap font-heading select-none">
+        <span className="text-[17vw] font-black tracking-tighter text-white/[0.06] md:text-white/[0.08] leading-none whitespace-nowrap font-heading select-none">
           {t('displayWord')}
         </span>
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center">
-        {/* Kicker badge with pulse */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-[var(--color-teal-light)]/40 backdrop-blur-md shadow-lg shadow-[var(--color-teal)]/10 mb-6 animate-fade-in hover:border-[var(--color-teal-vibrant)]/60 transition-colors">
+        {/* Kicker badge with vibrant pulse */}
+        <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#041B2D]/90 border border-[var(--color-teal-vibrant)]/60 backdrop-blur-md shadow-lg shadow-[var(--color-teal-vibrant)]/15 mb-6 animate-fade-in hover:border-[var(--color-teal-vibrant)] transition-all">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-teal-vibrant)] opacity-75" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-teal-vibrant)] opacity-85" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--color-teal-vibrant)]" />
           </span>
-          <span className="text-xs sm:text-sm font-semibold text-slate-100 font-sans tracking-wide">
+          <span className="text-xs sm:text-sm font-bold text-[var(--color-teal-light)] font-sans tracking-wide">
             {t('kicker')}
           </span>
         </div>
 
-        {/* Primary Headline with Rich Medical Gradient */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-heading leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--color-mint)] to-[var(--color-teal-light)] drop-shadow-sm max-w-4xl">
+        {/* Primary Headline with Rich Medical Radiance */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-heading leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E0FAF7] to-[var(--color-teal-vibrant)] drop-shadow-md max-w-4xl">
           {t('headline')}
         </h1>
 
-        {/* Verbatim Subheadline */}
-        <p className="mt-4 sm:mt-5 text-base sm:text-xl text-slate-200/95 max-w-2xl font-sans leading-relaxed">
+        {/* Verbatim Subheadline - High Clarity */}
+        <p className="mt-4 sm:mt-5 text-base sm:text-xl text-[var(--color-text-hero-sub)] font-medium max-w-2xl font-sans leading-relaxed">
           {t('subheadline')}
         </p>
 
-        {/* Dual CTAs with enhanced micro-interactions and glow */}
+        {/* Dual CTAs with Ultra High-Contrast and Punchy Vibrancy */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <MagneticButton strength={0.25}>
             <Link
               href="#story"
-              className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[var(--color-teal-vibrant)] via-[var(--color-teal)] to-[var(--color-deep-teal)] text-white font-bold text-sm sm:text-base shadow-xl shadow-[var(--color-teal-vibrant)]/25 transition-all duration-300 hover:shadow-[var(--color-teal-vibrant)]/45 hover:scale-[1.02] border border-white/20 active:scale-[0.98]"
+              className="inline-flex items-center gap-2.5 px-7 sm:px-9 py-3.5 rounded-2xl bg-gradient-to-r from-[var(--color-teal-vibrant)] via-[var(--color-teal)] to-[var(--color-blue-electric)] text-[#041B2D] font-black text-sm sm:text-base shadow-xl shadow-[var(--color-teal-vibrant)]/35 transition-all duration-300 hover:shadow-2xl hover:shadow-[var(--color-teal-vibrant)]/55 hover:scale-[1.03] active:scale-[0.98] border border-white/40"
             >
               <span>{t('ctaStory')}</span>
-              <ArrowDown className="w-4 h-4 animate-bounce" />
+              <ArrowDown className="w-4 h-4 animate-bounce text-[#041B2D]" />
             </Link>
           </MagneticButton>
 
           <MagneticButton strength={0.25}>
             <Link
               href="#programs"
-              className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm sm:text-base border border-white/20 backdrop-blur-md shadow-lg transition-all duration-300 hover:border-white/40 active:scale-[0.98]"
+              className="inline-flex items-center gap-2.5 px-7 sm:px-9 py-3.5 rounded-2xl bg-[#08233A]/90 hover:bg-[#0B2C47] text-white font-bold text-sm sm:text-base border-2 border-[var(--color-teal-vibrant)]/60 hover:border-[var(--color-teal-vibrant)] shadow-lg shadow-[var(--color-teal-vibrant)]/15 backdrop-blur-md transition-all duration-300 active:scale-[0.98] hover:scale-[1.02]"
             >
-              <Sparkles className="w-4 h-4 text-[var(--color-teal-soft)]" />
+              <Sparkles className="w-4 h-4 text-[var(--color-teal-vibrant)]" />
               <span>{t('ctaPrograms')}</span>
             </Link>
           </MagneticButton>

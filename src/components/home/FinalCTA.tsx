@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import { GraduationCap, Stethoscope, Building2, ArrowLeft, ArrowRight, HeartHandshake } from 'lucide-react';
 
@@ -99,13 +99,13 @@ export function FinalCTA() {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/10">
+                <div className="mt-6 pt-4 border-t border-white/15">
                   <Link
                     href={aud.href}
-                    className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition-all duration-200 ${
+                    className={`w-full py-3 px-5 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition-all duration-300 shadow-md ${
                       aud.primary
-                        ? 'bg-[#40A39C] hover:bg-[#358a84] text-[#08324A] shadow-md'
-                        : 'bg-white/10 hover:bg-white/20 text-white'
+                        ? 'bg-gradient-to-r from-[var(--color-teal-vibrant)] to-[var(--color-blue-electric)] text-[#041B2D] hover:scale-[1.02] hover:shadow-lg hover:shadow-[var(--color-teal-vibrant)]/30 active:scale-[0.98]'
+                        : 'bg-[#041B2D]/80 hover:bg-[#0B2C47] text-white border border-[var(--color-teal-vibrant)]/40 hover:border-[var(--color-teal-vibrant)] active:scale-[0.98]'
                     }`}
                   >
                     <span>{aud.ctaText}</span>

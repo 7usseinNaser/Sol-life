@@ -97,17 +97,17 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
           </div>
 
           {/* Region Tabs (Pills) */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#041B2D]/90 border border-white/20 backdrop-blur-md">
             {regionsData.map((region, idx) => {
               const isCurrent = idx === activeIndex;
               return (
                 <button
                   key={region.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`px-3 py-1 text-xs md:text-sm font-medium rounded-lg transition-all duration-300 ${
+                  className={`px-3.5 py-1.5 text-xs md:text-sm font-bold rounded-lg transition-all duration-300 ${
                     isCurrent
-                      ? 'bg-[#40A39C] text-[#08324A] font-bold shadow-md'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-[var(--color-teal-vibrant)] to-[var(--color-blue-electric)] text-[#041B2D] font-black shadow-md shadow-[var(--color-teal-vibrant)]/30 scale-105'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {region.shortLabel}
@@ -120,18 +120,18 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
         {/* Carousel Slide Content */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
           {/* Visual Thumbnail */}
-          <div className="md:col-span-5 relative h-48 sm:h-56 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border border-white/15 shadow-inner group">
+          <div className="md:col-span-5 relative h-48 sm:h-56 md:h-64 rounded-xl md:rounded-2xl overflow-hidden border border-white/25 shadow-lg group">
             <Image
               src={activeRegion.imagePlaceholder || '/images/team-group.jpg'}
               alt={`فريق سول لايف في ${activeRegion.labelAr}`}
               fill
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 contrast-105"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-100 contrast-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#08324A] via-transparent to-transparent opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#041B2D] via-transparent to-transparent opacity-85" />
             
             {/* Region Floating Badge on image */}
-            <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-[#08324A]/80 border border-[#40A39C]/40 backdrop-blur-md text-xs font-semibold text-white flex items-center gap-1.5 shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-[#40A39C] animate-pulse" />
+            <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-[#041B2D]/95 border border-[var(--color-teal-vibrant)]/50 backdrop-blur-md text-xs font-bold text-white flex items-center gap-1.5 shadow-xl">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-teal-vibrant)] animate-pulse" />
               <span>{activeRegion.shortLabel}</span>
             </div>
           </div>
@@ -139,27 +139,27 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
           {/* Content Description */}
           <div className="md:col-span-7 flex flex-col justify-between space-y-3.5 text-right">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs text-[#40A39C] font-semibold mb-1">
+              <div className="inline-flex items-center gap-1.5 text-xs text-[var(--color-teal-vibrant)] font-bold mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>حضور ميداني فاعل ومستمر</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white font-heading">
                 {activeRegion.labelAr}
               </h3>
-              <p className="mt-1.5 text-xs sm:text-sm text-slate-200/90 leading-relaxed font-sans">
+              <p className="mt-1.5 text-xs sm:text-sm text-[#E0FAF7] leading-relaxed font-sans">
                 {activeRegion.description}
               </p>
             </div>
 
             {/* Key Activities in this Region */}
-            <div className="space-y-1.5 bg-white/5 p-3 rounded-xl border border-white/10">
-              <span className="text-[11px] font-bold text-white/60 block">
+            <div className="space-y-1.5 bg-[#041B2D]/75 p-3.5 rounded-xl border border-white/15">
+              <span className="text-[11px] font-bold text-[var(--color-teal-light)] block">
                 أبرز البرامج التدريبية المنفّذة:
               </span>
               <div className="space-y-1">
                 {activeRegion.activities.slice(0, 3).map((act, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-white/90">
-                    <Activity className="w-3.5 h-3.5 text-[#40A39C] shrink-0 mt-0.5" />
+                  <div key={i} className="flex items-start gap-2 text-xs text-white">
+                    <Activity className="w-3.5 h-3.5 text-[var(--color-teal-vibrant)] shrink-0 mt-0.5" />
                     <span className="line-clamp-1">{act}</span>
                   </div>
                 ))}
@@ -175,10 +175,10 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
                     key={idx}
                     onClick={() => setActiveIndex(idx)}
                     aria-label={`الانتقال إلى المنطقة ${idx + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                    className={`h-2 rounded-full transition-all duration-300 ${
                       idx === activeIndex
-                        ? 'w-6 bg-[#40A39C]'
-                        : 'w-1.5 bg-white/30 hover:bg-white/50'
+                        ? 'w-7 bg-[var(--color-teal-vibrant)] shadow-sm shadow-[var(--color-teal-vibrant)]'
+                        : 'w-2 bg-white/35 hover:bg-white/60'
                     }`}
                   />
                 ))}
@@ -189,14 +189,14 @@ export function RegionCarousel({ onRegionChange }: RegionCarouselProps) {
                 <button
                   onClick={prevSlide}
                   aria-label="المنطقة السابقة"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-colors duration-200 active:scale-95"
+                  className="p-2.5 rounded-xl bg-[#08233A] hover:bg-[var(--color-teal-vibrant)] hover:text-[#041B2D] border border-[var(--color-teal-vibrant)]/40 text-white transition-all duration-200 active:scale-95 shadow-md"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={nextSlide}
                   aria-label="المنطقة التالية"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-colors duration-200 active:scale-95"
+                  className="p-2.5 rounded-xl bg-[#08233A] hover:bg-[var(--color-teal-vibrant)] hover:text-[#041B2D] border border-[var(--color-teal-vibrant)]/40 text-white transition-all duration-200 active:scale-95 shadow-md"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>

@@ -66,10 +66,10 @@ export function AdaptiveMotionController() {
         <button
           type="button"
           onClick={toggleMode}
-          className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-semibold backdrop-blur-xl border transition-all duration-300 shadow-xl hover:scale-105 active:scale-95 ${
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold backdrop-blur-xl border-2 transition-all duration-300 shadow-2xl hover:scale-105 active:scale-95 cursor-pointer ${
             isLite
-              ? 'bg-[#08324A]/90 text-amber-300 border-amber-400/40 shadow-amber-900/20'
-              : 'bg-[#08324A]/90 text-[#67C0B9] border-[#40A39C]/40 shadow-[#40A39C]/20'
+              ? 'bg-[#041B2D]/95 text-amber-300 border-amber-400/60 shadow-amber-500/20'
+              : 'bg-[#041B2D]/95 text-[var(--color-teal-vibrant)] border-[var(--color-teal-vibrant)]/60 shadow-[var(--color-teal-vibrant)]/25'
           }`}
           title={
             isLite
@@ -80,12 +80,12 @@ export function AdaptiveMotionController() {
         >
           {isLite ? (
             <>
-              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400 animate-pulse" />
+              <Zap className="w-4 h-4 text-amber-400 fill-amber-400 animate-pulse" />
               <span>{isAr ? 'وضع السرعة: خفيف' : 'Lite Mode: Active'}</span>
             </>
           ) : (
             <>
-              <Sparkles className="w-3.5 h-3.5 text-[#40A39C] animate-pulse" />
+              <Sparkles className="w-4 h-4 text-[var(--color-teal-vibrant)] animate-pulse" />
               <span>{isAr ? 'التجربة: سينمائية' : 'Experience: Ultra'}</span>
             </>
           )}

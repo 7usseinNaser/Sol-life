@@ -1,69 +1,68 @@
 :root {
   /* ==========================================
-     1. BRAND COLOR PALETTE (Soul Life Medical Theme)
+     1. VIBRANT LUXURY MEDICAL PALETTE (Soul Life)
      ========================================== */
-  /* Primary Navy (Authority & Trust) */
-  --color-navy: #08324A;
-  --color-navy-dark: #051F2E;
-  --color-navy-light: #0E4260;
-  --color-navy-hsl: 201 80% 16%;
+  /* Deep Obsidian Navy (Crisp, High-Authority) */
+  --color-navy: #041B2D;
+  --color-navy-dark: #02111D;
+  --color-navy-light: #0B2C47;
+  --color-navy-card: #08233A;
 
-  /* Medical Deep Teal (Clinical Excellence) */
-  --color-deep-teal: #0D5260;
-  --color-deep-teal-hsl: 189 76% 21%;
+  /* Electric Medical Cyan & Vibrant Teal (High Energy & Contrast) */
+  --color-teal: #00BFA5;
+  --color-teal-vibrant: #00E5C9;
+  --color-teal-light: #38EFD6;
+  --color-teal-deep: #00897B;
+  --color-cyan-electric: #06B6D4;
+  --color-blue-electric: #0EA5E9;
 
-  /* Pulse Vibrant Teal (Life & Energy - Heartbeat ECG) */
-  --color-teal: #1B8B82;
-  --color-teal-vibrant: #179D93;
-  --color-teal-light: #40A39C;
-  --color-teal-soft: #67C0B9;
-  --color-teal-hsl: 175 68% 32%;
-
-  /* Mint & Medical Light Surfaces */
-  --color-mint: #E4F3F1;
-  --color-mint-subtle: #F1F9F8;
-  --color-mint-glow: rgba(228, 243, 241, 0.6);
-
-  /* Light Theme Surfaces & Text */
-  --color-bg: #F6FAF9;
+  /* Crisp Pure Surfaces & High Contrast */
+  --color-bg: #F4F8FA;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #FFFFFF;
-  --color-surface-hover: #F0F7F6;
-  --color-ink: #0F2A3A;
-  --color-ink-muted: #4A6572;
-  --color-ink-subtle: #7A929E;
-  --color-border: rgba(13, 82, 96, 0.12);
-  --color-border-subtle: rgba(13, 82, 96, 0.06);
+  --color-surface-hover: #F0FBF9;
+
+  /* High Legibility Text Colors (No Faded Grays) */
+  --color-ink: #071E2E;
+  --color-ink-muted: #2C485C;
+  --color-ink-subtle: #4D6D82;
+  --color-ink-inverse: #FFFFFF;
+  --color-text-hero-sub: #DFF9F6;
+
+  /* Crisp Defined Borders (Not blurry/faded) */
+  --color-border: #D1E5EE;
+  --color-border-bold: #99CADA;
+  --color-border-teal: rgba(0, 229, 201, 0.35);
 
   /* Status Colors */
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
-  --color-info: #3B82F6;
+  --color-info: #0284C7;
 
   /* ==========================================
-     2. GRADIENTS & GLOW SYSTEM
+     2. PUNCHY VIBRANT GRADIENTS & GLOWS
      ========================================== */
-  --gradient-brand: linear-gradient(135deg, var(--color-navy-dark) 0%, var(--color-navy) 40%, var(--color-deep-teal) 75%, var(--color-teal) 100%);
-  --gradient-pulse: linear-gradient(90deg, var(--color-teal-vibrant) 0%, var(--color-teal-light) 50%, var(--color-soft-mint, #A7E3DD) 100%);
-  --gradient-ecg-line: linear-gradient(90deg, rgba(27,139,130,0) 0%, rgba(23,157,147,0.9) 50%, rgba(103,192,185,1) 80%, rgba(27,139,130,0) 100%);
-  --gradient-hero-overlay: radial-gradient(circle at 50% 20%, rgba(27, 139, 130, 0.15) 0%, rgba(8, 50, 74, 0) 70%);
-  --gradient-dark-glass: linear-gradient(145deg, rgba(8, 50, 74, 0.9) 0%, rgba(13, 82, 96, 0.8) 100%);
-  --gradient-light-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(241, 249, 248, 0.65) 100%);
+  --gradient-brand: linear-gradient(135deg, #02111D 0%, #041B2D 45%, #00897B 85%, #00E5C9 100%);
+  --gradient-cta-primary: linear-gradient(135deg, #00E5C9 0%, #00BFA5 50%, #0EA5E9 100%);
+  --gradient-cta-hover: linear-gradient(135deg, #38EFD6 0%, #00E5C9 50%, #38BDF8 100%);
+  --gradient-pulse: linear-gradient(90deg, #00E5C9 0%, #38EFD6 50%, #0EA5E9 100%);
+  --gradient-text-glow: linear-gradient(135deg, #FFFFFF 0%, #E0FAF7 50%, #00E5C9 100%);
+  --gradient-ecg-line: linear-gradient(90deg, rgba(0,229,201,0) 0%, rgba(0,229,201,0.95) 50%, rgba(56,239,214,1) 80%, rgba(0,229,201,0) 100%);
 
   /* ==========================================
-     3. GLASSMORPHISM & SHADOWS
+     3. HIGH-DEFINITION GLASS & SHADOWS
      ========================================== */
-  --glass-bg-light: rgba(255, 255, 255, 0.75);
-  --glass-border-light: rgba(255, 255, 255, 0.6);
-  --glass-bg-dark: rgba(8, 50, 74, 0.82);
-  --glass-border-dark: rgba(64, 163, 156, 0.3);
+  --glass-bg-light: rgba(255, 255, 255, 0.88);
+  --glass-border-light: rgba(255, 255, 255, 0.95);
+  --glass-bg-dark: rgba(4, 27, 45, 0.92);
+  --glass-border-dark: rgba(0, 229, 201, 0.3);
   --glass-blur-sm: 8px;
   --glass-blur-md: 16px;
   --glass-blur-lg: 24px;
-  --glass-shadow: 0 16px 40px -12px rgba(8, 50, 74, 0.1), 0 4px 12px -2px rgba(8, 50, 74, 0.04);
-  --glass-shadow-floating: 0 24px 50px -15px rgba(8, 50, 74, 0.18), 0 8px 20px -4px rgba(8, 50, 74, 0.08);
-  --shadow-glow-teal: 0 0 25px rgba(23, 157, 147, 0.35);
+  --shadow-glow-cyan: 0 0 30px rgba(0, 229, 201, 0.45);
+  --shadow-card-elevated: 0 12px 36px -10px rgba(4, 27, 45, 0.12), 0 4px 14px -3px rgba(4, 27, 45, 0.06);
+  --shadow-card-dark: 0 18px 45px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 229, 201, 0.15);
 
   /* ==========================================
      4. MOTION & TIMING TOKENS
